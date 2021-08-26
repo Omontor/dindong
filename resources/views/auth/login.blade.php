@@ -1,81 +1,158 @@
-@extends('layouts.app')
-@section('content')
-<div class="login-box">
-    <div class="login-logo">
-        <div class="login-logo">
-            <a href="{{ route('admin.home') }}">
-                {{ trans('panel.site_title') }}
-            </a>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">
-                {{ trans('global.login') }}
-            </p>
+<!DOCTYPE html>
+<html lang="en">
 
-            @if(session()->has('message'))
-                <p class="alert alert-info">
-                    {{ session()->get('message') }}
-                </p>
-            @endif
+    <head>
+        <meta charset="utf-8" />
+        <title>Dindong Timbrado Digital</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-            <form action="{{ route('login') }}" method="POST">
-                @csrf
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/Icon.png">
 
-                <div class="form-group">
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" name="email" value="{{ old('email', null) }}">
+        <!-- App css -->
+        <link href="/template/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/template/assets/css/jquery-ui.min.css" rel="stylesheet">
+        <link href="/template/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/template/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+        <link href="/template/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
-                    @if($errors->has('email'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('email') }}
-                        </div>
-                    @endif
-                </div>
+    </head>
 
-                <div class="form-group">
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="{{ trans('global.login_password') }}">
+    <body class="account-body accountbg" style="background: linear-gradient(0deg, #f7f7f7 0%, #B9E4FF 55%);">
 
-                    @if($errors->has('password'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('password') }}
-                        </div>
-                    @endif
-                </div>
+        <!-- Log In page -->
+        <div class="container">
+            <div class="row vh-100 ">
+                <div class="col-12 align-self-center">
+                    <div class="auth-page">
+                        <div class="card auth-card shadow-lg">
+                            <div class="card-body">
+                                <div class="px-3">
+                                    <div class="auth-logo-box">
+                                        <a href="#" class="logo logo-admin"><img src="assets/images/Icon.png" height="55" alt="logo" class="auth-logo"></a>
+                                    </div><!--end auth-logo-box-->
+                                    
+                                    <div class="text-center auth-logo-text">
+                                        <br>
+                                        <img class="fluid" src="assets/images/Logo-loader.png" style="max-height: 80px"></img>
+                                        <br>
+                                        <br>
+                                        <p class="text-muted mb-0">Introduce tus datos de usuario para iniciar sesión</p>
+                                    </div> <!--end auth-logo-text-->  
+    
+                                    <form class="form-horizontal auth-form my-4" method="POST" action="{{ route('login') }}" aria-label="@lang('auth/login.document_title')" role="form">
+                                            @csrf
+                                     
+                                            <div class="form-group">
+   
+                                            <div class="input-group mb-3">
+                                                <span class="auth-form-icon">
+                                                    <i class="dripicons-user"></i> 
+                                                </span>                                                                                                              
+                                             <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Correo electrónico" required autofocus>
+                                            </div>                                    
+                                        </div><!--end form-group--> 
+            
+                                        <div class="form-group">
+                                                              
+                                            <div class="input-group mb-3"> 
+                                                <span class="auth-form-icon">
+                                                    <i class="dripicons-lock"></i> 
+                                                </span>      
+
+                                                    <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                                                                    
+                                            </div>                               
+                                        </div><!--end form-group--> 
+            
+                                        <div class="form-group row mt-4">
+                                            <div class="col-sm-6">
+                                             
+                                            </div><!--end col--> 
+                                            <div class="col-sm-6 text-right">
+                                                <a class="text-muted font-13" href="{{ route('password.request') }}"><i class="dripicons-lock"></i>
+                                                    Recuperar contraseña
+                                                </a>                                    
+                                            </div><!--end col--> 
 
 
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" name="remember" id="remember">
-                            <label for="remember">{{ trans('global.remember_me') }}</label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">
-                            {{ trans('global.login') }}
-                        </button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
+                                                @if (!$errors->isEmpty())
+                                                    <div>
+                                                        <br>
+                                                        <br>
+
+                                                        <div class="form-group{{ $errors->first() ? ' has-error' : '' }}" style="color: red; text-align: center;">
+                                                        <span class="help-block" style="align-content: center;">
+                                                            <center>
+                                                            <strong><small style="text-align: center; align-content: center;">{!! $errors->first() !!}</small></strong>
+                                                        </center>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                @endif
+
+                                        </div><!--end form-group--> 
+            
+                                        <div class="form-group mb-0 row">
+                                            <div class="col-12 mt-2">
+                                                <button class="btn btn-gradient-primary btn-round btn-block waves-effect waves-light" type="submit">Ingresar<i class="fas fa-sign-in-alt ml-1"></i></button>
+                                            </div><!--end col--> 
+                                        </div> <!--end form-group-->                           
+                                    </form><!--end form-->
+                                </div><!--end /div-->
+                                
+                                <div class="m-3 text-center text-muted">
+                                    Dindong 2021
+                                </div>
+                            </div><!--end card-body-->
+                        </div><!--end card-->
+                        <div class="account-social text-center mt-4">
+                            <h6 class="my-4">Social Login</h6>
+                            <ul class="list-inline mb-4">
+                                <li class="list-inline-item">
+                                    <a href="login/facebook" class="">
+                                        <i class="fab fa-facebook-f facebook"></i>
+                                    </a>                                    
+                                </li>
+<!--                                <li class="list-inline-item">
+                                    <a href="" class="">
+                                        <i class="fab fa-twitter twitter"></i>
+                                    </a>
+                                </li>-->
+                                <li class="list-inline-item">
+                                    <a href="login/google" class="">
+                                        <i class="fab fa-google google"></i>
+                                    </a>                                    
+                                </li>
+                            </ul>
+                        </div><!--end account-social-->
+                    </div><!--end auth-page-->
+                </div><!--end col-->           
+            </div><!--end row-->
+        </div><!--end container-->
+        <!-- End Log In page -->
+
+        
 
 
-            @if(Route::has('password.request'))
-                <p class="mb-1">
-                    <a href="{{ route('password.request') }}">
-                        {{ trans('global.forgot_password') }}
-                    </a>
-                </p>
-            @endif
-            <p class="mb-1">
-                <a class="text-center" href="{{ route('register') }}">
-                    {{ trans('global.register') }}
-                </a>
-            </p>
-        </div>
-        <!-- /.login-card-body -->
-    </div>
-</div>
-@endsection
+        <!-- jQuery  -->
+        <script src="/template/assets/js/jquery.min.js"></script>
+        <script src="/template/assets/js/jquery-ui.min.js"></script>
+        <script src="/template/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/template/assets/js/metismenu.min.js"></script>
+        <script src="/template/assets/js/waves.js"></script>
+        <script src="/template/assets/js/feather.min.js"></script>
+        <script src="/template/assets/js/jquery.slimscroll.min.js"></script>        
+
+        <!-- App js -->
+        <script src="/template/assets/js/app.js"></script>
+        
+    </body>
+
+</html>
+
+
+ 
