@@ -8,12 +8,21 @@ use App\Http\Requests\UpdateProfileRequest;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\Country;
+use App\Models\Municipality;
+use App\Models\State;
 
 class ProfileController extends Controller
 {
     public function index()
     {
-        return view('frontend.profile');
+
+        $states = State::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        return view('frontend.profile' ,compact('states', 'municipalities','countries'));
     }
 
     public function update(UpdateProfileRequest $request)
