@@ -50,7 +50,7 @@
    
                                             <div class="input-group mb-3">
                                                 <span class="auth-form-icon">
-                                                    <i class="dripicons-user"></i> 
+                                                    <i class="dripicons-mail"></i> 
                                                 </span>                                                                                                              
                                              <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Correo electrónico" required autofocus>
                                             </div>                                    
@@ -72,11 +72,11 @@
                                             <div class="col-sm-6">
                                              
                                             </div><!--end col--> 
-                                            <div class="col-sm-6 text-right">
+                                          {{--  <div class="col-sm-6 text-right">
                                                 <a class="text-muted font-13" href="{{ route('password.request') }}"><i class="dripicons-lock"></i>
                                                     Recuperar contraseña
                                                 </a>                                    
-                                            </div><!--end col--> 
+                                            </div><!--end col--> --}}
 
 
                                                 @if (!$errors->isEmpty())
@@ -109,7 +109,7 @@
                                 </div>
                             </div><!--end card-body-->
                         </div><!--end card-->
-                        <div class="account-social text-center mt-4">
+                     {{--   <div class="account-social text-center mt-4">
                             <h6 class="my-4">Social Login</h6>
                             <ul class="list-inline mb-4">
                                 <li class="list-inline-item">
@@ -128,7 +128,7 @@
                                     </a>                                    
                                 </li>
                             </ul>
-                        </div><!--end account-social-->
+                        </div><!--end account-social--> --}}
                     </div><!--end auth-page-->
                 </div><!--end col-->           
             </div><!--end row-->

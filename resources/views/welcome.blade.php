@@ -13,7 +13,7 @@
                     <h1 class="main-heading color-black">¡Bienvenido!</h1>
                     <p class="paragraph"><span>Din Dong</span> Tu nuevo sistema de facturación.</p>
                     <div class="download-buttons">
-                      <a href="#" class="google-play">
+                      <a href="/register" class="google-play">
                         <i class="far fa-user-circle"></i>
                         <div class="button-content">
                           <h6>Primera vez<span>Registrarse</span></h6>

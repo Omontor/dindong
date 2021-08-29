@@ -1,347 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <title>Crovex - Admin & Dashboard Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="/template/assets/images/favicon.ico">
-
-        <link href="/template/../plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
-
-        <!-- App css -->
-        <link href="/template/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/template/assets/css/jquery-ui.min.css" rel="stylesheet">
-        <link href="/template/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <link href="/template/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
-        <link href="/template/assets/css/app.min.css" rel="stylesheet" type="text/css" />
-
-    </head>
+@include('layouts.header')
 
     <body>
-        
-         <!-- Top Bar Start -->
-         <div class="topbar">
+        @include('partials.topbar')
+        @include('partials.sidebar')
 
-            <!-- LOGO -->
-            <div class="topbar-left">
-                <a href="/template/dashboard/crm-index.html" class="logo">
-                    <span>
-                        <img src="/template/assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
-                    </span>
-                    <span>
-                        <img src="/template/assets/images/logo.png" alt="logo-large" class="logo-lg logo-light">
-                        <img src="/template/assets/images/logo-dark.png" alt="logo-large" class="logo-lg">
-                    </span>
-                </a>
-            </div>
-            <!--end logo-->
-            <!-- Navbar -->
-            <nav class="navbar-custom">    
-                <ul class="list-unstyled topbar-nav float-right mb-0"> 
-                    <li class="hidden-sm">
-                        <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="javascript: void(0);" role="button"
-                            aria-haspopup="false" aria-expanded="false">
-                            English <img src="/template/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt=""/> <i class="mdi mdi-chevron-down"></i> 
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="javascript: void(0);"><span> German </span><img src="/template/assets/images/flags/germany_flag.jpg" alt="" class="ml-2 float-right" height="14"/></a>
-                            <a class="dropdown-item" href="javascript: void(0);"><span> Italian </span><img src="/template/assets/images/flags/italy_flag.jpg" alt="" class="ml-2 float-right" height="14"/></a>
-                            <a class="dropdown-item" href="javascript: void(0);"><span> French </span><img src="/template/assets/images/flags/french_flag.jpg" alt="" class="ml-2 float-right" height="14"/></a>
-                            <a class="dropdown-item" href="javascript: void(0);"><span> Spanish </span><img src="/template/assets/images/flags/spain_flag.jpg" alt="" class="ml-2 float-right" height="14"/></a>
-                            <a class="dropdown-item" href="javascript: void(0);"><span> Russian </span><img src="/template/assets/images/flags/russia_flag.jpg" alt="" class="ml-2 float-right" height="14"/></a>
-                        </div>
-                    </li>
-
-                    <li class="dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="false" aria-expanded="false">
-                            <i class="ti-bell noti-icon"></i>
-                            <span class="badge badge-danger badge-pill noti-icon-badge">2</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-lg pt-0">
-                           
-                            <h6 class="dropdown-item-text font-15 m-0 py-3 bg-primary text-white d-flex justify-content-between align-items-center">
-                                Notifications <span class="badge badge-light badge-pill">2</span>
-                            </h6> 
-                            <div class="slimscroll notification-list">
-                                <!-- item-->
-                                <a href="#" class="dropdown-item py-3">
-                                    <small class="float-right text-muted pl-2">2 min ago</small>
-                                    <div class="media">
-                                        <div class="avatar-md bg-primary">
-                                           <i class="la la-cart-arrow-down text-white"></i>
-                                        </div>
-                                        <div class="media-body align-self-center ml-2 text-truncate">
-                                            <h6 class="my-0 font-weight-normal text-dark">Your order is placed</h6>
-                                            <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
-                                        </div><!--end media-body-->
-                                    </div><!--end media-->
-                                </a><!--end-item-->
-                                <!-- item-->
-                                <a href="#" class="dropdown-item py-3">
-                                    <small class="float-right text-muted pl-2">10 min ago</small>
-                                    <div class="media">
-                                        <div class="avatar-md bg-success">
-                                            <i class="la la-group text-white"></i>
-                                        </div>
-                                        <div class="media-body align-self-center ml-2 text-truncate">
-                                            <h6 class="my-0 font-weight-normal text-dark">Meeting with designers</h6>
-                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
-                                        </div><!--end media-body-->
-                                    </div><!--end media-->
-                                </a><!--end-item-->
-                                <!-- item-->
-                                <a href="#" class="dropdown-item py-3">
-                                    <small class="float-right text-muted pl-2">40 min ago</small>
-                                    <div class="media">
-                                        <div class="avatar-md bg-pink">
-                                            <i class="la la-list-alt text-white"></i>
-                                        </div>
-                                        <div class="media-body align-self-center ml-2 text-truncate">
-                                            <h6 class="my-0 font-weight-normal text-dark">UX 3 Task complete.</h6>
-                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
-                                        </div><!--end media-body-->
-                                    </div><!--end media-->
-                                </a><!--end-item-->
-                                <!-- item-->
-                                <a href="#" class="dropdown-item py-3">
-                                    <small class="float-right text-muted pl-2">1 hr ago</small>
-                                    <div class="media">
-                                        <div class="avatar-md bg-warning">
-                                            <i class="la la-truck text-white"></i>
-                                        </div>
-                                        <div class="media-body align-self-center ml-2 text-truncate">
-                                            <h6 class="my-0 font-weight-normal text-dark">Your order is placed</h6>
-                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
-                                        </div><!--end media-body-->
-                                    </div><!--end media-->
-                                </a><!--end-item-->
-                                <!-- item-->
-                                <a href="#" class="dropdown-item py-3">
-                                    <small class="float-right text-muted pl-2">2 hrs ago</small>
-                                    <div class="media">
-                                        <div class="avatar-md bg-info">
-                                            <i class="la la-check-circle text-white"></i>
-                                        </div>
-                                        <div class="media-body align-self-center ml-2 text-truncate">
-                                            <h6 class="my-0 font-weight-normal text-dark">Payment Successfull</h6>
-                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
-                                        </div><!--end media-body-->
-                                    </div><!--end media-->
-                                </a><!--end-item-->
-                            </div>
-                            <!-- All-->
-                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
-                                View all <i class="fi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </li>
-
-                    <li class="dropdown">
-                        <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="false" aria-expanded="false">
-                            <img src="/template/assets/images/users/user-1.png" alt="profile-user" class="rounded-circle" /> 
-                            <span class="ml-1 nav-user-name hidden-sm">Amelia <i class="mdi mdi-chevron-down"></i> </span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="ti-user text-muted mr-2"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
-                            <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
-                            <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Lock screen</a>
-                            <div class="dropdown-divider mb-0"></div>
-                            <a class="dropdown-item" href="#"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
-                        </div>
-                    </li>
-                </ul><!--end topbar-nav-->
-    
-                <ul class="list-unstyled topbar-nav mb-0">                        
-                    <li>
-                        <button class="nav-link button-menu-mobile waves-effect waves-light">
-                            <i class="ti-menu nav-icon"></i>
-                        </button>
-                    </li>
-                    <li class="hide-phone app-search">
-                        <form role="search" class="">
-                            <input type="text" id="AllCompo" placeholder="Search..." class="form-control">
-                            <a href=""><i class="fas fa-search"></i></a>
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-            <!-- end navbar-->
-        </div>
-        <!-- Top Bar End -->
-
-        
-        <!-- Left Sidenav -->
-        <div class="left-sidenav">
-            <ul class="metismenu left-sidenav-menu">
-                <li>
-                    <a href="javascript: void(0);"><i class="ti-bar-chart"></i><span>Dashboard</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="/template/dashboard/analytics-index.html"><i class="ti-control-record"></i>Analytics</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/dashboard/crm-index.html"><i class="ti-control-record"></i>CRM</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/dashboard/helpdesk-index.html"><i class="ti-control-record"></i>Helpdesk</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/dashboard/sales-index.html"><i class="ti-control-record"></i>Sales</a></li> 
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);"><i class="ti-server"></i><span>Apps</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Email <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/apps/email-inbox.html">Inbox</a></li>
-                                <li><a href="/template/apps/email-read.html">Read Email</a></li>
-                            </ul>
-                        </li>  
-                        <li class="nav-item"><a class="nav-link" href="/template/apps/chat.html"><i class="ti-control-record"></i>Chat</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/apps/contact-list.html"><i class="ti-control-record"></i>Contact List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/apps/calendar.html"><i class="ti-control-record"></i>Calendar</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/apps/invoice.html"><i class="ti-control-record"></i>Invoice</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/apps/tasks.html"><i class="ti-control-record"></i>Tasks</a></li>
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Projects <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/apps/project-overview.html">Overview</a></li>                                    
-                                <li><a href="/template/apps/project-projects.html">Projects</a></li>
-                                <li><a href="/template/apps/project-board.html">Board</a></li>
-                                <li><a href="/template/apps/project-teams.html">Teams</a></li>
-                                <li><a href="/template/apps/project-files.html">Files</a></li>
-                                <li><a href="/template/apps/new-project.html">New Project</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Ecommerce <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/apps/ecommerce-products.html">Products</a></li>                                    
-                                <li><a href="/template/apps/ecommerce-product-list.html">Product List</a></li>
-                                <li><a href="/template/apps/ecommerce-product-detail.html">Product Detail</a></li>
-                                <li><a href="/template/apps/ecommerce-cart.html">Cart</a></li>
-                                <li><a href="/template/apps/ecommerce-checkout.html">Checkout</a></li>                                    
-                            </ul>
-                        </li>
-                    </ul>
-                </li>                   
-
-                <li>
-                    <a href="javascript: void(0);"><i class="ti-crown"></i><span>UI Kit</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Elements <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/ui-bootstrap.html">Bootstrap</a></li>
-                                <li><a href="/template/others/ui-animation.html">Animation</a></li>
-                                <li><a href="/template/others/ui-avatar.html">Avatar</a></li>
-                                <li><a href="/template/others/ui-clipboard.html">Clip Board</a></li>
-                                <li><a href="/template/others/ui-files.html">File Manager</a></li>
-                                <li><a href="/template/others/ui-check-radio.html"><span>Check & Radio</span></a></li>
-                            </ul>
-                        </li>  
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Advanced UI <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/advanced-rangeslider.html">Range Slider</a></li>
-                                <li><a href="/template/others/advanced-sweetalerts.html">Sweet Alerts</a></li>
-                                <li><a href="/template/others/advanced-nestable.html">Nestable List</a></li>
-                                <li><a href="/template/others/advanced-ratings.html">Ratings</a></li>
-                                <li><a href="/template/others/advanced-highlight.html">Highlight</a></li>
-                                <li><a href="/template/others/advanced-session.html">Session Timeout</a></li>
-                                <li><a href="/template/others/advanced-idle-timer.html">Idle Timer</a></li>
-                            </ul>
-                        </li>  
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Forms <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/forms-elements.html">Basic Elements</a></li>
-                                <li><a href="/template/others/forms-advanced.html">Advance Elements</a></li>
-                                <li><a href="/template/others/forms-validation.html">Validation</a></li>
-                                <li><a href="/template/others/forms-wizard.html">Wizard</a></li>
-                                <li><a href="/template/others/forms-editors.html">Editors</a></li>
-                                <li><a href="/template/others/forms-repeater.html">Repeater</a></li>
-                                <li><a href="/template/others/forms-x-editable.html">X Editable</a></li>
-                                <li><a href="/template/others/forms-uploads.html">File Upload</a></li>
-                            </ul>
-                        </li>  
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Charts <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/charts-apex.html">Apex</a></li>
-                                <li><a href="/template/others/charts-morris.html">Morris</a></li>
-                                <li><a href="/template/others/charts-flot.html">Flot</a></li>
-                                <li><a href="/template/others/charts-chartjs.html">Chartjs</a></li>
-                            </ul>
-                        </li>  
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Tables <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/tables-basic.html">Basic</a></li>
-                                <li><a href="/template/others/tables-datatable.html">Datatables</a></li>
-                                <li><a href="/template/others/tables-responsive.html">Responsive</a></li>
-                                <li><a href="/template/others/tables-editable.html">Editable</a></li>
-                            </ul>
-                        </li>  
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Icons <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/icons-materialdesign.html">Material Design</a></li>
-                                <li><a href="/template/others/icons-dripicons.html">Dripicons</a></li>
-                                <li><a href="/template/others/icons-fontawesome.html">Font awesome</a></li>
-                                <li><a href="/template/others/icons-themify.html">Themify</a></li>
-                                <li><a href="/template/others/icons-typicons.html">Typicons</a></li>
-                            </ul>
-                        </li>  
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Maps <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/maps-google.html">Google Maps</a></li>
-                                <li><a href="/template/others/maps-vector.html">Vector Maps</a></li>  
-                            </ul>
-                        </li>  
-                        <li>
-                            <a href="javascript: void(0);"><i class="ti-control-record"></i>Email Template <span class="menu-arrow left-has-menu"><i class="mdi mdi-chevron-right"></i></span></a>
-                            <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="/template/others/email-templates-basic.html">Basic Action Email</a></li>
-                                <li><a href="/template/others/email-templates-alert.html">Alert Email</a></li>
-                                <li><a href="/template/others/email-templates-billing.html">Billing Email</a></li>
-                            </ul>
-                        </li>   
-                    </ul>                        
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);"><i class="ti-layers-alt"></i><span>Pages</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="/template/pages/pages-profile.html"><i class="ti-control-record"></i>Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/pages/pages-timeline.html"><i class="ti-control-record"></i>Timeline</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/pages/pages-treeview.html"><i class="ti-control-record"></i>Treeview</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/pages/pages-starter.html"><i class="ti-control-record"></i>Starter Page</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/pages/pages-pricing.html"><i class="ti-control-record"></i>Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/pages/pages-gallery.html"><i class="ti-control-record"></i>Gallery</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript: void(0);"><i class="ti-lock"></i><span>Authentication</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-                    <ul class="nav-second-level" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="/template/authentication/auth-login.html"><i class="ti-control-record"></i>Log in</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/authentication/auth-register.html"><i class="ti-control-record"></i>Register</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/authentication/auth-recover-pw.html"><i class="ti-control-record"></i>Recover Password</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/authentication/auth-lock-screen.html"><i class="ti-control-record"></i>Lock Screen</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/authentication/auth-404.html"><i class="ti-control-record"></i>Error 404</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/authentication/auth-500.html"><i class="ti-control-record"></i>Error 500</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- end left-sidenav-->
 
         <div class="page-wrapper">
             <!-- Page Content-->
@@ -354,12 +19,11 @@
                             <div class="page-title-box">
                                 <div class="float-right">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Crovex</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">CRM</li>
+                                        <li class="breadcrumb-item">Din Dong</li>
+                                        <li class="breadcrumb-item active">Inicio</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">CRM</h4>
+                                <h4 class="page-title">Inicio</h4>
                             </div><!--end page-title-box-->
                         </div><!--end col-->
                     </div>
@@ -370,24 +34,24 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class=" d-flex justify-content-between">
-                                        <img src="/template/assets/images/widgets/monthly-re.png" alt="" height="75">
+                                        <img src="/assets/images/Icon.png" alt="" height="75">
                                         <div class="align-self-center">
-                                            <h2 class="mt-0 mb-2 font-weight-semibold">$955<span class="badge badge-soft-success font-11 ml-2"><i class="fas fa-arrow-up"></i> 8.6%</span></h2>
-                                            <h4 class="title-text mb-0">Monthly Revenue</h4>
+                                          
+                                            <h4 class="title-text mb-0">Folios Restantes</h4>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between bg-purple p-3 mt-3 rounded">
                                         <div>
-                                            <h4 class="mb-1 font-weight-semibold text-white font-20">$10255</h4>
-                                            <p class="text-white mb-0">Card Balance</p>
+                                                <h4 class="mb-1 font-weight-semibold text-white font-20">$00</h4>
+                                                <p class="text-white mb-0">Pagos</p>
                                         </div>
                                         <div>
-                                            <h4 class=" mb-1 font-weight-semibold text-white font-20">25.12 <small>BTC</small></h4>
-                                            <p class="text-white mb-0">Crypto Balance</p>
+                                            <h4 class=" mb-1 font-weight-semibold text-white font-20">00</h4>
+                                            <p class="text-white mb-0">Facturas Emitidas</p>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div><!--end card-body-->
-                            </div><!--end card--> 
+                            </div><!--end card-->
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="header-title mt-0 mb-3">Emails Report</h4>
@@ -397,6 +61,7 @@
                                 </div><!--end card-body-->
                             </div><!--end card-->                            
                         </div><!-- end col-->
+
                         <div class="col-xl-9">
                             <div class="card">
                                 <div class="card-body">
@@ -804,42 +469,16 @@
 
                 </div><!-- container -->
 
-                <footer class="footer text-center text-sm-left">
-                    &copy; 2020 Crovex <span class="text-muted d-none d-sm-inline-block float-right">Crafted with <i class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
-                </footer><!--end footer-->
+              @include('layouts.footer')
             </div>
             <!-- end page content -->
         </div>
         <!-- end page-wrapper -->
 
         
+@include('layouts.scripts')
 
-
-        <!-- jQuery  -->
-        <script src="/template/assets/js/jquery.min.js"></script>
-        <script src="/template/assets/js/bootstrap.bundle.min.js"></script>
-        <script src="/template/assets/js/metismenu.min.js"></script>
-        <script src="/template/assets/js/waves.js"></script>
-        <script src="/template/assets/js/feather.min.js"></script>
-        <script src="/template/assets/js/jquery.slimscroll.min.js"></script>
-        <script src="/template/assets/js/jquery-ui.min.js"></script>
-
-        <script src="/template/../plugins/moment/moment.js"></script>
-        <script src="/template/../plugins/apexcharts/apexcharts.min.js"></script>
-        <script src="/template/../plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-        <script src="/template/../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="/template/../plugins/flot-chart/jquery.canvaswrapper.js"></script>
-        <script src="/template/../plugins/flot-chart/jquery.colorhelpers.js"></script>
-        <script src="/template/../plugins/flot-chart/jquery.flot.js"></script>        
-        <script src="/template/../plugins/flot-chart/jquery.flot.saturated.js"></script>
-        <script src="/template/../plugins/flot-chart/jquery.flot.browser.js"></script>
-        <script src="/template/../plugins/flot-chart/jquery.flot.drawSeries.js"></script> 
-        <script src="/template/../plugins/flot-chart/jquery.flot.uiConstants.js"></script>
-        <script src="/template/../plugins/flot-chart/jquery.flot-dataType.js"></script>
-        <script src="/template/assets/pages/jquery.crm_dashboard.init.js"></script>
-
-        <!-- App js -->
-        <script src="/template/assets/js/app.js"></script>
+   
         
     </body>
 
