@@ -17,7 +17,7 @@
         <!-- Navbar -->
         <nav class="navbar-custom">    
             <ul class="list-unstyled topbar-nav float-right mb-0"> 
-                <li class="hidden-sm">
+                {{-- <li class="hidden-sm">
                     <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="javascript: void(0);" role="button"
                         aria-haspopup="false" aria-expanded="false">
                         English <img src="/template/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt=""/> <i class="mdi mdi-chevron-down"></i> 
@@ -114,7 +114,7 @@
                             View all <i class="fi-arrow-right"></i>
                         </a>
                     </div>
-                </li>
+                </li> --}}
 
                 <li class="dropdown">
                     <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
