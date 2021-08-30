@@ -123,7 +123,7 @@
                         <span class="ml-1 nav-user-name hidden-sm">{{ Auth::user()->name}}<i class="mdi mdi-chevron-down"></i> </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="{{route('frontend.profile.index')}}"><i class="ti-id-badge text-muted mr-2"></i>Datos de facturación</a>
+                        <a class="dropdown-item" href="{{route('frontend.perfil.index')}}"><i class="ti-id-badge text-muted mr-2"></i>Datos de facturación</a>
                         {{--<a class="dropdown-item" href="#"><i class="ti-wallet text-muted mr-2"></i> My Wallet</a>
                          <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Configuración</a>--}}
                         

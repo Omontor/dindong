@@ -97,4 +97,9 @@ class User extends Authenticatable
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+        public function userinfo()
+    {
+        return $this->hasMany(UserInfo::class,'created_by_id');
+    }
 }

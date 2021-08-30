@@ -11,6 +11,7 @@ use App\Models\Country;
 use App\Models\Municipality;
 use App\Models\State;
 use App\Models\UserInfo;
+use Auth;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -31,6 +32,9 @@ class UserInfoController extends Controller
 
     public function create()
     {
+
+        if(Auth::user()->userinfo->count() == 0){
+
         abort_if(Gate::denies('user_info_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $states = State::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -39,7 +43,27 @@ class UserInfoController extends Controller
 
         $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('frontend.userInfos.create', compact('states', 'municipalities', 'countries'));
+        return view('frontend.profile', compact('states', 'municipalities', 'countries'));
+
+        }
+        else {
+
+        $userInfo=Auth::user()->userinfo->first();
+
+          abort_if(Gate::denies('user_info_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $states = State::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $userInfo->load('state', 'municipality', 'country', 'created_by');
+
+        return view('frontend.userInfos.edit', compact('states', 'municipalities', 'countries', 'userInfo'));
+
+        }
+        
     }
 
     public function store(StoreUserInfoRequest $request)
@@ -62,7 +86,7 @@ class UserInfoController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $userInfo->id]);
         }
 
-        return redirect()->route('frontend.user-infos.index');
+        return redirect()->route('frontend.home');
     }
 
     public function edit(UserInfo $userInfo)
@@ -117,7 +141,7 @@ class UserInfoController extends Controller
             $userInfo->key_file->delete();
         }
 
-        return redirect()->route('frontend.user-infos.index');
+        return redirect()->route('frontend.home');
     }
 
     public function show(UserInfo $userInfo)

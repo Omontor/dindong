@@ -198,6 +198,8 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::post('user-infos/ckmedia', 'UserInfoController@storeCKEditorImages')->name('user-infos.storeCKEditorImages');
     Route::resource('user-infos', 'UserInfoController');
 
+    Route::get('frontend/profile', 'UserInfoController@create')->name('perfil.index');
+
     // State
     Route::delete('states/destroy', 'StateController@massDestroy')->name('states.massDestroy');
     Route::resource('states', 'StateController');
@@ -288,8 +290,8 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     Route::delete('facturamas/destroy', 'FacturamaController@massDestroy')->name('facturamas.massDestroy');
     Route::resource('facturamas', 'FacturamaController');
 
-    Route::get('frontend/profile', 'ProfileController@index')->name('profile.index');
-    Route::post('frontend/profile', 'ProfileController@update')->name('profile.update');
-    Route::post('frontend/profile/destroy', 'ProfileController@destroy')->name('profile.destroy');
-    Route::post('frontend/profile/password', 'ProfileController@password')->name('profile.password');
+    Route::get('frontend/profile2', 'ProfileController@index')->name('profile.index');
+    Route::post('frontend/profile2', 'ProfileController@update')->name('profile.update');
+    Route::post('frontend/profile2/destroy', 'ProfileController@destroy')->name('profile.destroy');
+    Route::post('frontend/profile2/password', 'ProfileController@password')->name('profile.password');
 });

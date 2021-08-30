@@ -28,6 +28,15 @@
                         </div><!--end col-->
                     </div>
                     <!-- end page title end breadcrumb -->
+
+@if(Session::has('message'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{Session::get('message') }}</p>
+@endif
+
+@if(Auth::user()->userinfo->count() == 0)
+<p class="alert alert-info">Para hacer uso de la plataforma debes registrar tus datos primero.</p>
+@endif
+
                     <div class="row">
                         <div class="col-md-12">
                             
@@ -224,16 +233,16 @@
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
-    init: function () {
-@if(isset($userInfo) && $userInfo->logo)
-      var file = {!! json_encode($userInfo->logo) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
-    },
+        init: function () {
+    @if(isset($userInfo) && $userInfo->logo)
+          var file = {!! json_encode($userInfo->logo) !!}
+              this.options.addedfile.call(this, file)
+          this.options.thumbnail.call(this, file, file.preview)
+          file.previewElement.classList.add('dz-complete')
+          $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
+          this.options.maxFiles = this.options.maxFiles - 1
+    @endif
+        },
     error: function (file, response) {
         if ($.type(response) === 'string') {
             var message = response //dropzone sends it's own error messages in string
@@ -249,8 +258,8 @@
         }
 
         return _results
+        }
     }
-}
 </script>
 <script>
     Dropzone.options.certificateDropzone = {
@@ -275,15 +284,15 @@
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
-    init: function () {
-@if(isset($userInfo) && $userInfo->certificate)
-      var file = {!! json_encode($userInfo->certificate) !!}
-          this.options.addedfile.call(this, file)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="certificate" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
-    },
+        init: function () {
+    @if(isset($userInfo) && $userInfo->certificate)
+          var file = {!! json_encode($userInfo->certificate) !!}
+              this.options.addedfile.call(this, file)
+          file.previewElement.classList.add('dz-complete')
+          $('form').append('<input type="hidden" name="certificate" value="' + file.file_name + '">')
+          this.options.maxFiles = this.options.maxFiles - 1
+    @endif
+        },
      error: function (file, response) {
          if ($.type(response) === 'string') {
              var message = response //dropzone sends it's own error messages in string
@@ -299,8 +308,8 @@
          }
 
          return _results
-     }
-}
+        }
+    }
 </script>
 <script>
     Dropzone.options.keyFileDropzone = {
@@ -325,15 +334,15 @@
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
-    init: function () {
-@if(isset($userInfo) && $userInfo->key_file)
-      var file = {!! json_encode($userInfo->key_file) !!}
-          this.options.addedfile.call(this, file)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="key_file" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
-    },
+        init: function () {
+    @if(isset($userInfo) && $userInfo->key_file)
+          var file = {!! json_encode($userInfo->key_file) !!}
+              this.options.addedfile.call(this, file)
+          file.previewElement.classList.add('dz-complete')
+          $('form').append('<input type="hidden" name="key_file" value="' + file.file_name + '">')
+          this.options.maxFiles = this.options.maxFiles - 1
+    @endif
+        },
      error: function (file, response) {
          if ($.type(response) === 'string') {
              var message = response //dropzone sends it's own error messages in string
@@ -349,8 +358,8 @@
          }
 
          return _results
-     }
-}
+        }
+    }
 </script>        
   
     </body>

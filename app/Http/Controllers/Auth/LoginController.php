@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -41,7 +42,11 @@ class LoginController extends Controller
         if (auth()->user()->is_admin) {
             return '/admin';
         }
-
-        return '/home';
+            if(Auth::user()->userinfo->count() == 0){
+            return 'frontend/profile';
+        }
+        else{
+           return 'home';
+        }
     }
 }

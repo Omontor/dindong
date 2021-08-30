@@ -1,15 +1,40 @@
-@extends('layouts.frontend')
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+<!DOCTYPE html>
+<html lang="en">
 
-            <div class="card">
-                <div class="card-header">
-                    {{ trans('global.edit') }} {{ trans('cruds.userInfo.title_singular') }}
-                </div>
+@include('layouts.header')
 
-                <div class="card-body">
+    <body>
+        @include('partials.topbar')
+        @include('partials.sidebar')
+
+        <div class="page-wrapper">
+            <!-- Page Content-->
+            <div class="page-content">
+
+                <div class="container-fluid">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="float-right">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">Din Dong</li>
+                                        <li class="breadcrumb-item"> <a href="/home">Inicio</a></li>
+                                        <li class="breadcrumb-item">Datos de facturación</li>
+                                        <li class="breadcrumb-item active">Editar</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Datos de facturación</h4>
+                            </div><!--end page-title-box-->
+                        </div><!--end col-->
+                    </div>
+                    <!-- end page title end breadcrumb -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="card">
+
+                                <div class="card-body">
                     <form method="POST" action="{{ route("frontend.user-infos.update", [$userInfo->id]) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
@@ -149,20 +174,29 @@
                             <span class="help-block">{{ trans('cruds.userInfo.fields.password_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-danger" type="submit">
+                            <button class="btn btn btn-outline-info" type="submit">
                                 {{ trans('global.save') }}
                             </button>
                         </div>
                     </form>
-                </div>
+                
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                            
+                        </div><!-- end col-->
+                    </div><!--end row-->
+
+
+                </div><!-- container -->
+
+              @include('layouts.footer')
             </div>
-
+            <!-- end page content -->
         </div>
-    </div>
-</div>
-@endsection
+        <!-- end page-wrapper -->
+     
+        @include('layouts.scripts')
 
-@section('scripts')
 <script>
     Dropzone.options.logoDropzone = {
     url: '{{ route('frontend.user-infos.storeMedia') }}',
@@ -190,14 +224,14 @@
       }
     },
     init: function () {
-@if(isset($userInfo) && $userInfo->logo)
-      var file = {!! json_encode($userInfo->logo) !!}
-          this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, file.preview)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
+    @if(isset($userInfo) && $userInfo->logo)
+          var file = {!! json_encode($userInfo->logo) !!}
+              this.options.addedfile.call(this, file)
+          this.options.thumbnail.call(this, file, file.preview)
+          file.previewElement.classList.add('dz-complete')
+          $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
+          this.options.maxFiles = this.options.maxFiles - 1
+    @endif
     },
     error: function (file, response) {
         if ($.type(response) === 'string') {
@@ -214,8 +248,8 @@
         }
 
         return _results
+     }
     }
-}
 </script>
 <script>
     Dropzone.options.certificateDropzone = {
@@ -240,15 +274,15 @@
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
-    init: function () {
-@if(isset($userInfo) && $userInfo->certificate)
-      var file = {!! json_encode($userInfo->certificate) !!}
-          this.options.addedfile.call(this, file)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="certificate" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
-    },
+        init: function () {
+    @if(isset($userInfo) && $userInfo->certificate)
+          var file = {!! json_encode($userInfo->certificate) !!}
+              this.options.addedfile.call(this, file)
+          file.previewElement.classList.add('dz-complete')
+          $('form').append('<input type="hidden" name="certificate" value="' + file.file_name + '">')
+          this.options.maxFiles = this.options.maxFiles - 1
+    @endif
+        },
      error: function (file, response) {
          if ($.type(response) === 'string') {
              var message = response //dropzone sends it's own error messages in string
@@ -264,8 +298,8 @@
          }
 
          return _results
-     }
-}
+        }
+    }
 </script>
 <script>
     Dropzone.options.keyFileDropzone = {
@@ -290,15 +324,15 @@
         this.options.maxFiles = this.options.maxFiles + 1
       }
     },
-    init: function () {
-@if(isset($userInfo) && $userInfo->key_file)
-      var file = {!! json_encode($userInfo->key_file) !!}
-          this.options.addedfile.call(this, file)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="key_file" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
-@endif
-    },
+        init: function () {
+    @if(isset($userInfo) && $userInfo->key_file)
+          var file = {!! json_encode($userInfo->key_file) !!}
+              this.options.addedfile.call(this, file)
+          file.previewElement.classList.add('dz-complete')
+          $('form').append('<input type="hidden" name="key_file" value="' + file.file_name + '">')
+          this.options.maxFiles = this.options.maxFiles - 1
+    @endif
+        },
      error: function (file, response) {
          if ($.type(response) === 'string') {
              var message = response //dropzone sends it's own error messages in string
@@ -314,7 +348,10 @@
          }
 
          return _results
-     }
-}
+        }
+    }
 </script>
-@endsection
+
+    </body>
+
+</html>
