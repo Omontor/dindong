@@ -59,10 +59,10 @@
                                         <div  class="apex-charts">
                                             
                                             <a class="btn btn-block btn-gradient-primary waves-effect waves-light" style="color: white;" 
-                                            href="#"> <i class="mdi mdi-qrcode-edit"></i>  Crear Factura</a>   <br><br>
-                                            <a class="btn btn-block btn-gradient-secondary waves-effect waves-light" style="color: white;" href="#"> <i class="mdi mdi-qrcode-edit"></i>  Crear Nota de Crédito</a>  <br><br>
+                                            href="{{route('frontend.invoices.create')}}"> <i class="mdi mdi-qrcode-edit"></i>  Crear Factura</a>   <br><br>
+                                           {{-- <a class="btn btn-block btn-gradient-secondary waves-effect waves-light" style="color: white;" href="#"> <i class="mdi mdi-qrcode-edit"></i>  Crear Nota de Crédito</a>  <br><br>--}}
                                             <a class="btn btn-block btn-gradient-purple waves-effect waves-light" style="color: white;"
-                                            href="#"> <i class="mdi mdi-qrcode-edit"></i>  Crear Pago</a>  <br><br>
+                                            href="#"> <i class="mdi mdi-qrcode-edit"></i>Crear Producto</a>  <br><br>
                                             <a class="btn btn-block btn-gradient-pink waves-effect waves-light" style="color: white;"
                                             href="#"> <i class="mdi mdi-qrcode-edit"></i>  Crear Cliente</a> <br><br>
                                         </div>
@@ -87,7 +87,7 @@
                                 </div><!--end card-body--> 
                             </div><!--end card-->
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <div class="card crm-data-card">
                                         <div class="card-body"> 
                                             <div class="row">
@@ -104,24 +104,8 @@
                                         </div><!--end card-body--> 
                                     </div><!--end card-->
                                 </div><!--end col-->
-                                <div class="col-sm-4">
-                                    <div class="card crm-data-card">
-                                        <div class="card-body"> 
-                                            <div class="row">
-                                                <div class="col-4 align-self-center">
-                                                    <div class="icon-info">
-                                                        <i class="far fa-file-alt rounded-circle bg-soft-pink"></i>
-                                                    </div>
-                                                </div><!-- end col-->
-                                                <div class="col-8 text-right">
-                                                    <p class="text-muted font-14">Cotizaciones</p>
-                                                    <h3 class="mb-0">10k</h3>                                            
-                                                </div><!-- end col-->
-                                            </div><!-- end row-->
-                                        </div><!--end card-body--> 
-                                    </div><!--end card-->
-                                </div><!--end col-->
-                                <div class="col-sm-4">
+                                
+                                <div class="col-sm-6">
                                     <div class="card crm-data-card">
                                         <div class="card-body"> 
                                             <div class="row">
@@ -138,6 +122,24 @@
                                         </div><!--end card-body--> 
                                     </div><!--end card--> 
                                 </div><!--end col-->
+
+                               {{-- <div class="col-sm-4">
+                                    <div class="card crm-data-card">
+                                        <div class="card-body"> 
+                                            <div class="row">
+                                                <div class="col-4 align-self-center">
+                                                    <div class="icon-info">
+                                                        <i class="far fa-file-alt rounded-circle bg-soft-pink"></i>
+                                                    </div>
+                                                </div><!-- end col-->
+                                                <div class="col-8 text-right">
+                                                    <p class="text-muted font-14">Cotizaciones</p>
+                                                    <h3 class="mb-0">10k</h3>                                            
+                                                </div><!-- end col-->
+                                            </div><!-- end row-->
+                                        </div><!--end card-body--> 
+                                    </div><!--end card-->
+                                </div><!--end col--> --}}
                             </div><!--end row-->
                             <div class="card">
                                 <div class="card-body">
