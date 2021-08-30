@@ -1,6 +1,38 @@
-@extends('layouts.frontend')
-@section('content')
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+
+@include('layouts.header')
+
+    <body>
+        @include('partials.topbar')
+        @include('partials.sidebar')
+
+        <div class="page-wrapper">
+            <!-- Page Content-->
+            <div class="page-content">
+
+                <div class="container-fluid">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="float-right">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">Din Dong</li>
+                                        <li class="breadcrumb-item"> <a href="/home">Inicio</a></li>
+                                        <li class="breadcrumb-item active">Productos</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Mis productos</h4>
+                            </div><!--end page-title-box-->
+                        </div><!--end col-->
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
+@if(Session::has('message'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{Session::get('message') }}</p>
+@endif
+
     <div class="row justify-content-center">
         <div class="col-md-12">
             @can('product_create')
@@ -93,8 +125,24 @@
 
         </div>
     </div>
-</div>
-@endsection
+
+
+                </div><!-- container -->
+
+              @include('layouts.footer')
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page-wrapper -->
+     
+        @include('layouts.scripts')
+
+    </body>
+
+</html>
+
+
+
 @section('scripts')
 @parent
 <script>
