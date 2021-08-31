@@ -98,7 +98,7 @@
                                                 </div><!-- end col-->
                                                 <div class="col-8 text-right">
                                                     <p class="text-muted font-14">Clientes</p>
-                                                    <h3 class="mb-0">63k</h3>
+                                                    <h3 class="mb-0">{{Auth::user()->clientes->count()}}</h3>
                                                 </div><!-- end col-->
                                             </div><!-- end row-->                                                                                  
                                         </div><!--end card-body--> 
@@ -116,7 +116,7 @@
                                                 </div><!-- end col-->
                                                 <div class="col-8 text-right">
                                                     <p class="text-muted font-14">Productos</p>
-                                                    <h3 class="mb-0">720</h3>                                            
+                                                    <h3 class="mb-0">{{Auth::user()->productos->count()}}</h3>                                            
                                                 </div><!-- end col-->
                                             </div><!-- end row-->                                                                                     
                                         </div><!--end card-body--> 

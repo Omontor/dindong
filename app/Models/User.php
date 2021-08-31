@@ -102,4 +102,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserInfo::class,'created_by_id');
     }
+
+    public function productos(){
+
+        return $this->hasMany(Product::class,'created_by_id'); 
+    }
+
+      public function clientes(){
+
+        return $this->hasMany(Client::class,'created_by_id'); 
+    }
 }
