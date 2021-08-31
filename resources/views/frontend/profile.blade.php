@@ -68,6 +68,24 @@
                             @endif
                             <span class="help-block">{{ trans('cruds.userInfo.fields.rfc_helper') }}</span>
                         </div>
+
+
+                        <div class="form-group">
+                            <label class="required" for="regimen">Regimen Fiscal</label>
+                            <select class="form-control select2" name="regimen" id="regimen" required>
+                                @foreach($regim as $id => $entry)
+                                    <option value="{{ $id }}" {{ old('regimen') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('regim'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('regim') }}
+                                </div>
+                            @endif
+                        </div>
+
+
+
                         <div class="form-group">
                             <label class="required" for="legal_name">{{ trans('cruds.userInfo.fields.legal_name') }}</label>
                             <input class="form-control" type="text" name="legal_name" id="legal_name" value="{{ old('legal_name', '') }}" required>

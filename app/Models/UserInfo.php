@@ -102,4 +102,8 @@ class UserInfo extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function regime(){
+        return $this->hasMany(FiscalRegime::class , 'regimen');
+    }
 }

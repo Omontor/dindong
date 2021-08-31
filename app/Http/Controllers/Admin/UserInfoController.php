@@ -11,6 +11,7 @@ use App\Models\Country;
 use App\Models\Municipality;
 use App\Models\State;
 use App\Models\UserInfo;
+use App\Models\FiscalRegime;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -26,7 +27,7 @@ class UserInfoController extends Controller
 
         $userInfos = UserInfo::with(['state', 'municipality', 'country', 'created_by', 'media'])->get();
 
-        return view('admin.userInfos.index', compact('userInfos'));
+        return view('admin.userInfos.index', compact('userInfos','regim'));
     }
 
     public function create()
@@ -39,7 +40,10 @@ class UserInfoController extends Controller
 
         $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.userInfos.create', compact('states', 'municipalities', 'countries'));
+        $regim = FiscalRegime::all();
+
+
+        return view('admin.userInfos.create', compact('states', 'municipalities', 'countries' 'regim'));
     }
 
     public function store(StoreUserInfoRequest $request)
@@ -74,10 +78,11 @@ class UserInfoController extends Controller
         $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $regim = FiscalRegime::all();
 
         $userInfo->load('state', 'municipality', 'country', 'created_by');
 
-        return view('admin.userInfos.edit', compact('states', 'municipalities', 'countries', 'userInfo'));
+        return view('admin.userInfos.edit', compact('states', 'municipalities', 'countries', 'userInfo', 'regim'));
     }
 
     public function update(UpdateUserInfoRequest $request, UserInfo $userInfo)
@@ -126,7 +131,7 @@ class UserInfoController extends Controller
 
         $userInfo->load('state', 'municipality', 'country', 'created_by');
 
-        return view('admin.userInfos.show', compact('userInfo'));
+        return view('admin.userInfos.show', compact('userInfo','regim'));
     }
 
     public function destroy(UserInfo $userInfo)
