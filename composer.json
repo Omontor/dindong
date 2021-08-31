@@ -22,7 +22,8 @@
         "laraveldaily/laravel-charts": "^0.1.24",
         "spatie/laravel-medialibrary": "^8.7",
         "nuovo/spreadsheet-reader": "^0.5.11",
-        "laravel/sanctum": "^2.8"
+        "laravel/sanctum": "^2.8",
+        "strappberry/facturama-laravel": "master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
