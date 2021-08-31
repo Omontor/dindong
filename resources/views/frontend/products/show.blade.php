@@ -23,7 +23,7 @@
                                         <li class="breadcrumb-item active">Productos</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">Mis productos</h4>
+                                <h4 class="page-title">Mi producto</h4>
                             </div><!--end page-title-box-->
                         </div><!--end col-->
                     </div>

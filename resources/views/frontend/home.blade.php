@@ -64,7 +64,7 @@
                                             <a class="btn btn-block btn-gradient-purple waves-effect waves-light" style="color: white;"
                                             href="{{route('frontend.products.create')}}"> <i class="mdi mdi-qrcode-edit"></i>Crear Producto</a>  <br><br>
                                             <a class="btn btn-block btn-gradient-pink waves-effect waves-light" style="color: white;"
-                                            href="#"> <i class="mdi mdi-qrcode-edit"></i>  Crear Cliente</a> <br><br>
+                                            href="{{route('frontend.clients.create')}}"> <i class="mdi mdi-qrcode-edit"></i>  Crear Cliente</a> <br><br>
                                         </div>
                                     </div>
                                 </div><!--end card-body-->

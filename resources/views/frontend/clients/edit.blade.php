@@ -1,15 +1,47 @@
-@extends('layouts.frontend')
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+<!DOCTYPE html>
+<html lang="en">
 
-            <div class="card">
-                <div class="card-header">
-                    {{ trans('global.edit') }} {{ trans('cruds.client.title_singular') }}
-                </div>
+@include('layouts.header')
 
-                <div class="card-body">
+    <body>
+        @include('partials.topbar')
+        @include('partials.sidebar')
+
+        <div class="page-wrapper">
+            <!-- Page Content-->
+            <div class="page-content">
+
+                <div class="container-fluid">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="float-right">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">Din Dong</li>
+                                        <li class="breadcrumb-item"> <a href="/home">Inicio</a></li>
+                                        <li class="breadcrumb-item"> <a href="{{route('frontend.clients.index')}}"> Clientes</a></li>
+                                        <li class="breadcrumb-item active">Editar</li>
+                                    </ol>
+                                </div>
+                                <h4 class="page-title">Editar cliente</h4>
+                            </div><!--end page-title-box-->
+                        </div><!--end col-->
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
+@if(Session::has('message'))
+<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{Session::get('message') }}</p>
+@endif
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="card">
+
+                                <div class="card-body">
+
+
                     <form method="POST" action="{{ route("frontend.clients.update", [$client->id]) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
@@ -136,15 +168,30 @@
                             <span class="help-block">{{ trans('cruds.client.fields.last_name_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-danger" type="submit">
+                            <button class="btn btn-outline-info" type="submit">
                                 {{ trans('global.save') }}
                             </button>
                         </div>
                     </form>
-                </div>
-            </div>
 
+
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                            
+                        </div><!-- end col-->
+                    </div><!--end row-->
+
+
+                </div><!-- container -->
+
+              @include('layouts.footer')
+            </div>
+            <!-- end page content -->
         </div>
-    </div>
-</div>
-@endsection
+        <!-- end page-wrapper -->
+     
+        @include('layouts.scripts')
+
+    </body>
+
+</html>
