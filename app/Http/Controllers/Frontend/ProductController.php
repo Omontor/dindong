@@ -11,6 +11,7 @@ use App\Models\ProductUnit;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -20,7 +21,15 @@ class ProductController extends Controller
 
         $products = Product::with(['unity', 'created_by'])->get();
 
-        return view('frontend.products.index', compact('products'));
+
+        if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
+           return view('frontend.products.index', compact('products'));
+        }
+
+        
     }
 
     public function create()
@@ -29,7 +38,12 @@ class ProductController extends Controller
 
         $unities = ProductUnit::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
         return view('frontend.products.create', compact('unities'));
+    }
     }
 
     public function store(StoreProductRequest $request)
