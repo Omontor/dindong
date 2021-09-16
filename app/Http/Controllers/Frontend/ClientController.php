@@ -14,6 +14,7 @@ use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Auth;
 
 class ClientController extends Controller
 {
@@ -31,7 +32,13 @@ class ClientController extends Controller
 
         $users = User::get();
 
+        if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
+
         return view('frontend.clients.index', compact('clients', 'countries', 'municipalities', 'states', 'users'));
+         }
     }
 
     public function create()
@@ -44,7 +51,14 @@ class ClientController extends Controller
 
         $states = State::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
+
+
         return view('frontend.clients.create', compact('countries', 'municipalities', 'states'));
+        }
     }
 
     public function store(StoreClientRequest $request)

@@ -43,7 +43,7 @@ class ProductController extends Controller
         }
         else{
         return view('frontend.products.create', compact('unities'));
-    }
+        }
     }
 
     public function store(StoreProductRequest $request)

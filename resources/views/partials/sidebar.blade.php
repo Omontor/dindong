@@ -15,8 +15,8 @@
                     <a href="javascript: void(0);"><i class="ti-user"></i><span>Clientes</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
                          
-                        <li class="nav-item"><a class="nav-link" href="/template/apps/chat.html"><i class="ti-control-record"></i>Todos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/template/apps/contact-list.html"><i class="ti-control-record"></i>Crear cliente</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('frontend.clients.index')}}"><i class="ti-control-record"></i>Todos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('frontend.clients.create')}}"><i class="ti-control-record"></i>Crear cliente</a></li>
 
                     </ul>
                 </li>                   
