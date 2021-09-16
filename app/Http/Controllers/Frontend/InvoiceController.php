@@ -20,6 +20,7 @@ use App\Models\UserInfo;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Auth;
 
 class InvoiceController extends Controller
 {
@@ -49,7 +50,17 @@ class InvoiceController extends Controller
 
         $users = User::get();
 
-        return view('frontend.invoices.index', compact('invoices', 'user_infos', 'clients', 'products', 'payment_forms', 'payment_methods', 'tax_uses', 'currencies', 'taxes', 'related_vouchers', 'users'));
+
+if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
+              return view('frontend.invoices.index', compact('invoices', 'user_infos', 'clients', 'products', 'payment_forms', 'payment_methods', 'tax_uses', 'currencies', 'taxes', 'related_vouchers', 'users')); 
+
+        }
+
+        
+
     }
 
     public function create()
@@ -74,7 +85,16 @@ class InvoiceController extends Controller
 
         $type_vouchers = RelatedVoucher::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+
+
+        if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
         return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers'));
+        }
+
+
     }
 
     public function store(StoreInvoiceRequest $request)

@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Models\Country;
 use App\Models\Municipality;
 use App\Models\State;
-use App\Models\FiscalRegime;
 
 class ProfileController extends Controller
 {
@@ -20,13 +19,10 @@ class ProfileController extends Controller
 
         $states = State::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '')->orderBy('name', 'ASC');
 
-        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-         $regim = FiscalRegime::all();
-
-        return view('frontend.profile' ,compact('states', 'municipalities','countries','regim'));
+        $countries = Country::where('name', 'Mexico')->get();
+        return view('frontend.profile' ,compact('states', 'municipalities','countries'));
     }
 
     public function update(UpdateProfileRequest $request)
