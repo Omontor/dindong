@@ -140,7 +140,7 @@
                             <label class="required" for="country_id">{{ trans('cruds.userInfo.fields.country') }}</label>
                             <select class="form-control select2" name="country_id" id="country_id" required>
                                 @foreach($countries as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                    <option value="{{ $entry->id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry->name }}</option selected>
                                 @endforeach
                             </select>
                             @if($errors->has('country'))
