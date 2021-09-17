@@ -35,19 +35,30 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class=" d-flex justify-content-between">
-                                        <img src="/assets/images/Icon.png" alt="" height="75">
+                                        
                                         <div class="align-self-center">
-                                            <h4 class="title-text mb-0">Mis folios</h4>
+                                            <h4 class="title-text mb-0">Datos Estadísticos</h4>
                                         </div>
                                     </div>
-                                    <div class="d-flex justify-content-between bg-purple p-3 mt-3 rounded">
+                                    <div class="d-flex justify-content-between bg-primary p-3 mt-3 rounded">
                                         <div>
                                                 <h4 class="mb-1 font-weight-semibold text-white font-20">$00</h4>
-                                                <p class="text-white mb-0">Pagos</p>
+                                                <p class="text-white mb-0">Pagos Recibidos</p>
                                         </div>
+                                        
+                                    </div>                                    
+
+                                    <div class="d-flex justify-content-between bg-secondary p-3 mt-3 rounded">
                                         <div>
-                                            <h4 class=" mb-1 font-weight-semibold text-white font-20">00</h4>
-                                            <p class="text-white mb-0">Facturas Emitidas</p>
+                                                <h4 class="mb-1 font-weight-semibold text-white font-20">00</h4>
+                                                <p class="text-white mb-0">Total Facturas Emitidas</p>
+                                        </div>
+                                    </div>                                    
+
+                                    <div class="d-flex justify-content-between bg-dark p-3 mt-3 rounded">
+                                        <div>
+                                                <h4 class="mb-1 font-weight-semibold text-white font-20">00</h4>
+                                                <p class="text-white mb-0">Facturas Restantes</p>
                                         </div>
                                     </div>
                                 </div><!--end card-body-->
@@ -62,7 +73,7 @@
                                             <a class="btn btn-block btn-gradient-primary waves-effect waves-light" style="color: white;" 
                                             href="{{route('frontend.invoices.create')}}"> <i class="mdi mdi-qrcode-edit"></i>  Crear Factura</a>   <br><br>
                                            {{-- <a class="btn btn-block btn-gradient-secondary waves-effect waves-light" style="color: white;" href="#"> <i class="mdi mdi-qrcode-edit"></i>  Crear Nota de Crédito</a>  <br><br>--}}
-                                            <a class="btn btn-block btn-gradient-purple waves-effect waves-light" style="color: white;"
+                                            <a class="btn btn-block btn-gradient-info waves-effect waves-light" style="color: white;"
                                             href="{{route('frontend.products.create')}}"> <i class="mdi mdi-qrcode-edit"></i>Crear Producto</a>  <br><br>
                                             <a class="btn btn-block btn-gradient-pink waves-effect waves-light" style="color: white;"
                                             href="{{route('frontend.clients.create')}}"> <i class="mdi mdi-qrcode-edit"></i>  Crear Cliente</a> <br><br>
@@ -76,14 +87,14 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="media">
-                                        <img src="/template/assets/images/users/user-1.png" alt="" class="thumb-md rounded-circle mr-2">                                       
+                                    
                                         <div class="media-body align-self-center">
                                             <h4 class="mt-0 mb-1">Bienvenido, {{ Auth::user()->name}}</h4>
                                             <p class="text-muted mb-0 font-14 pr-5">Plan contratado:</p>
                                         </div><!--end media-body-->
                                     </div><!--end media-->
                                     <div class="welcome-img">
-                                        <img src="/template/assets/images/widgets/w-2.svg" alt="" height="120" class="mt-n4 mr-5 d-none d-lg-block">    
+                                        <img src="/assets/images/Icon.png" alt="" height="100" class="mt-n4 mr-5 d-none d-lg-block" style="padding-top:10px;">    
                                     </div>                                       
                                 </div><!--end card-body--> 
                             </div><!--end card-->

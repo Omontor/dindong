@@ -45,7 +45,7 @@ class ClientController extends Controller
     {
         abort_if(Gate::denies('client_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::where('id', '135')->get()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

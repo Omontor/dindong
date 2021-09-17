@@ -92,7 +92,9 @@ class InvoiceController extends Controller
 
         $series = InvoiceSerie::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series'));
+        $userinfo = Auth::user()->userinfo()->first();
+
+        return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series', 'userinfo'));
     }
     }
 
