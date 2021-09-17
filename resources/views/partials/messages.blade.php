@@ -1,6 +1,13 @@
 @foreach (['danger', 'warning', 'success', 'info'] as $key)
  @if(Session::has($key))
-     <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
+<div class="alert alert-{{ $key }} alert-dismissible fade show" role="alert">
+  {{ Session::get($key) }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
  @endif
 @endforeach
 @if(Auth::user()->userinfo->count() == 0)

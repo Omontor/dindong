@@ -38,10 +38,9 @@ class UserInfoController extends Controller
 
         $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $countries = Country::where('id', '135')->get()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $fiscal_regimes = FiscalRegime::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         return view('frontend.profile', compact('states', 'municipalities', 'countries', 'fiscal_regimes'));
     }
 
