@@ -23,6 +23,7 @@
                                         <li class="breadcrumb-item active">Inicio</li>
                                     </ol>
                                 </div>
+                                @include('partials.messages')
                                 <h4 class="page-title">Inicio</h4>
                             </div><!--end page-title-box-->
                         </div><!--end col-->

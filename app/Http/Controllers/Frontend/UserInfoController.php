@@ -65,7 +65,7 @@ class UserInfoController extends Controller
             Media::whereIn('id', $media)->update(['model_id' => $userInfo->id]);
         }
 
-        return redirect()->route('frontend.user-infos.index');
+         return redirect()->route('frontend.home')->with('success', 'Datos fiscales guardados exitosamente');
     }
 
     public function edit(UserInfo $userInfo)

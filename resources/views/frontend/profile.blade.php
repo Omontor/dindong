@@ -29,13 +29,7 @@
                     </div>
                     <!-- end page title end breadcrumb -->
 
-@if(Session::has('message'))
-<p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{Session::get('message') }}</p>
-@endif
-
-@if(Auth::user()->userinfo->count() == 0)
-<p class="alert alert-info">Para hacer uso de la plataforma debes registrar tus datos primero.</p>
-@endif
+                    @include('partials.messages')
 
                     <div class="row">
                         <div class="col-md-12">
@@ -71,21 +65,20 @@
 
 
                         <div class="form-group">
-                            <label class="required" for="fiscal_regime_id">Regimen Fiscal</label>
+                            <label class="required" for="regimen">Regimen Fiscal</label>
                             <select class="form-control select2" name="fiscal_regime_id" id="regimen" required>
                                 @foreach($fiscal_regimes as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('fiscal_regime_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                    <option value="{{ $id }}" {{ old('regimen') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                                 @endforeach
                             </select>
-                            @if($errors->has('fiscal_regime_id'))
+                            @if($errors->has('regim'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('fiscal_regime_id') }}
+                                    {{ $errors->first('regim') }}
                                 </div>
                             @endif
                         </div>
 
-
-
+                        
                         <div class="form-group">
                             <label class="required" for="legal_name">{{ trans('cruds.userInfo.fields.legal_name') }}</label>
                             <input class="form-control" type="text" name="legal_name" id="legal_name" value="{{ old('legal_name', '') }}" required>
@@ -158,7 +151,7 @@
                             <label class="required" for="country_id">{{ trans('cruds.userInfo.fields.country') }}</label>
                             <select class="form-control select2" name="country_id" id="country_id" required>
                                 @foreach($countries as $id => $entry)
-                                    <option value="{{ $entry }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option selected>
+                                    <option value="{{ $id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                                 @endforeach
                             </select>
                             @if($errors->has('country'))
@@ -201,11 +194,11 @@
                             <span class="help-block">{{ trans('cruds.userInfo.fields.password_helper') }}</span>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-info" type="submit">
+                            <button class="btn btn-success" type="submit">
                                 {{ trans('global.save') }}
                             </button>
                         </div>
-                </form>
+                    </form>
 
 
                                 </div><!--end card-body-->
