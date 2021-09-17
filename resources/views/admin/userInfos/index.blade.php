@@ -62,6 +62,9 @@
                             {{ trans('cruds.userInfo.fields.password') }}
                         </th>
                         <th>
+                            {{ trans('cruds.userInfo.fields.fiscal_regime') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -122,6 +125,9 @@
                             </td>
                             <td>
                                 {{ $userInfo->password ?? '' }}
+                            </td>
+                            <td>
+                                {{ $userInfo->fiscal_regime->name ?? '' }}
                             </td>
                             <td>
                                 @can('user_info_show')

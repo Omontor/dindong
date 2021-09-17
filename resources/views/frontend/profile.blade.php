@@ -71,15 +71,15 @@
 
 
                         <div class="form-group">
-                            <label class="required" for="regimen">Regimen Fiscal</label>
-                            <select class="form-control select2" name="regimen" id="regimen" required>
-                                @foreach($regim as $id => $entry)
-                                    <option value="{{ $id }}" {{ old('regimen') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                            <label class="required" for="fiscal_regime_id">Regimen Fiscal</label>
+                            <select class="form-control select2" name="fiscal_regime_id" id="regimen" required>
+                                @foreach($fiscal_regimes as $id => $entry)
+                                    <option value="{{ $id }}" {{ old('fiscal_regime_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                                 @endforeach
                             </select>
-                            @if($errors->has('regim'))
+                            @if($errors->has('fiscal_regime_id'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('regim') }}
+                                    {{ $errors->first('fiscal_regime_id') }}
                                 </div>
                             @endif
                         </div>
@@ -158,7 +158,7 @@
                             <label class="required" for="country_id">{{ trans('cruds.userInfo.fields.country') }}</label>
                             <select class="form-control select2" name="country_id" id="country_id" required>
                                 @foreach($countries as $id => $entry)
-                                    <option value="{{ $entry->id }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry->name }}</option selected>
+                                    <option value="{{ $entry }}" {{ old('country_id') == $id ? 'selected' : '' }}>{{ $entry }}</option selected>
                                 @endforeach
                             </select>
                             @if($errors->has('country'))

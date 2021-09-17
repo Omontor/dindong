@@ -122,6 +122,18 @@
                 <span class="help-block">{{ trans('cruds.userInfo.fields.password_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="fiscal_regime_id">{{ trans('cruds.userInfo.fields.fiscal_regime') }}</label>
+                <select class="form-control select2 {{ $errors->has('fiscal_regime') ? 'is-invalid' : '' }}" name="fiscal_regime_id" id="fiscal_regime_id" required>
+                    @foreach($fiscal_regimes as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('fiscal_regime_id') ? old('fiscal_regime_id') : $userInfo->fiscal_regime->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('fiscal_regime'))
+                    <span class="text-danger">{{ $errors->first('fiscal_regime') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.userInfo.fields.fiscal_regime_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

@@ -15,6 +15,8 @@ class AddRelationshipFieldsToUserInfosTable extends Migration
             $table->foreign('municipality_id', 'municipality_fk_4693915')->references('id')->on('municipalities');
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id', 'country_fk_4693925')->references('id')->on('countries');
+            $table->unsignedBigInteger('fiscal_regime_id');
+            $table->foreign('fiscal_regime_id', 'fiscal_regime_fk_4902065')->references('id')->on('fiscal_regimes');
             $table->unsignedBigInteger('created_by_id')->nullable();
             $table->foreign('created_by_id', 'created_by_fk_4705017')->references('id')->on('users');
         });

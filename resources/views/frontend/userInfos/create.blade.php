@@ -38,8 +38,8 @@
 
                         <div class="form-group">
                             <label class="required" for="regimen">Regimen Fiscal</label>
-                            <select class="form-control select2" name="regimen" id="regimen" required>
-                                @foreach($regim as $id => $entry)
+                            <select class="form-control select2" name="fiscal_regime_id" id="regimen" required>
+                                @foreach($fiscal_regimes as $id => $entry)
                                     <option value="{{ $id }}" {{ old('regimen') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                                 @endforeach
                             </select>

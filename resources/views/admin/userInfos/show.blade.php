@@ -131,6 +131,14 @@
                             {{ $userInfo->password }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.userInfo.fields.fiscal_regime') }}
+                        </th>
+                        <td>
+                            {{ $userInfo->fiscal_regime->name ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

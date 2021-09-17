@@ -45,6 +45,7 @@ class UserInfo extends Model implements HasMedia
         'country_id',
         'password',
         'created_at',
+        'fiscal_regime_id',
         'updated_at',
         'deleted_at',
         'created_by_id',
@@ -93,6 +94,11 @@ class UserInfo extends Model implements HasMedia
         return $this->getMedia('key_file')->last();
     }
 
+    public function fiscal_regime()
+    {
+        return $this->belongsTo(FiscalRegime::class, 'fiscal_regime_id');
+    }
+
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
@@ -101,9 +107,5 @@ class UserInfo extends Model implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
-    }
-
-    public function regime(){
-        return $this->hasMany(FiscalRegime::class , 'regimen');
     }
 }

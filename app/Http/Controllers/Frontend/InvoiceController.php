@@ -21,12 +21,20 @@ use App\Models\UserInfo;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Auth;
 
 class InvoiceController extends Controller
 {
     public function index()
     {
         abort_if(Gate::denies('invoice_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+
+
+        if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
 
         $invoices = Invoice::with(['user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'serie', 'created_by'])->get();
 
@@ -54,11 +62,16 @@ class InvoiceController extends Controller
 
         return view('frontend.invoices.index', compact('invoices', 'user_infos', 'clients', 'products', 'payment_forms', 'payment_methods', 'tax_uses', 'currencies', 'taxes', 'related_vouchers', 'invoice_series', 'users'));
     }
+    }
 
     public function create()
     {
         abort_if(Gate::denies('invoice_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        if(Auth::user()->userinfo->count() == 0){
+            return redirect()->back();
+        }
+        else{
         $user_datas = UserInfo::pluck('legal_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $names = Client::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -80,6 +93,7 @@ class InvoiceController extends Controller
         $series = InvoiceSerie::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series'));
+    }
     }
 
     public function store(StoreInvoiceRequest $request)

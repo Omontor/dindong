@@ -10,7 +10,7 @@ class HomeController
 {
     public function index()
     {
-        
+
         if(Auth::user()->userinfo->count() == 0){
             return redirect()->route('frontend.perfil.index'); 
         }

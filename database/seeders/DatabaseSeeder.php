@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
             CountriesTableSeeder::class,
+            StateSeeder::class,
+            MunicipiosTableSeeder::class,
+            FiscalRegimesTableSeeder::class,
         ]);
     }
 }

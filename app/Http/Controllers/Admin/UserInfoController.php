@@ -8,10 +8,10 @@ use App\Http\Requests\MassDestroyUserInfoRequest;
 use App\Http\Requests\StoreUserInfoRequest;
 use App\Http\Requests\UpdateUserInfoRequest;
 use App\Models\Country;
+use App\Models\FiscalRegime;
 use App\Models\Municipality;
 use App\Models\State;
 use App\Models\UserInfo;
-use App\Models\FiscalRegime;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -25,10 +25,9 @@ class UserInfoController extends Controller
     {
         abort_if(Gate::denies('user_info_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $userInfos = UserInfo::with(['state', 'municipality', 'country', 'created_by', 'media'])->get();
-                $regim = FiscalRegime::all();
+        $userInfos = UserInfo::with(['state', 'municipality', 'country', 'fiscal_regime', 'created_by', 'media'])->get();
 
-        return view('admin.userInfos.index', compact('userInfos','regim'));
+        return view('admin.userInfos.index', compact('userInfos'));
     }
 
     public function create()
@@ -41,10 +40,9 @@ class UserInfoController extends Controller
 
         $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $regim = FiscalRegime::all();
+        $fiscal_regimes = FiscalRegime::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-
-        return view('admin.userInfos.create', compact('states', 'municipalities', 'countries' ,'regim'));
+        return view('admin.userInfos.create', compact('states', 'municipalities', 'countries', 'fiscal_regimes'));
     }
 
     public function store(StoreUserInfoRequest $request)
@@ -79,11 +77,12 @@ class UserInfoController extends Controller
         $municipalities = Municipality::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $countries = Country::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-        $regim = FiscalRegime::all();
 
-        $userInfo->load('state', 'municipality', 'country', 'created_by');
+        $fiscal_regimes = FiscalRegime::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.userInfos.edit', compact('states', 'municipalities', 'countries', 'userInfo', 'regim'));
+        $userInfo->load('state', 'municipality', 'country', 'fiscal_regime', 'created_by');
+
+        return view('admin.userInfos.edit', compact('states', 'municipalities', 'countries', 'fiscal_regimes', 'userInfo'));
     }
 
     public function update(UpdateUserInfoRequest $request, UserInfo $userInfo)
@@ -130,9 +129,9 @@ class UserInfoController extends Controller
     {
         abort_if(Gate::denies('user_info_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $userInfo->load('state', 'municipality', 'country', 'created_by');
+        $userInfo->load('state', 'municipality', 'country', 'fiscal_regime', 'created_by');
 
-        return view('admin.userInfos.show', compact('userInfo','regim'));
+        return view('admin.userInfos.show', compact('userInfo'));
     }
 
     public function destroy(UserInfo $userInfo)

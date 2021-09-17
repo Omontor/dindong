@@ -54,6 +54,10 @@ class UpdateUserInfoRequest extends FormRequest
                 'string',
                 'required',
             ],
+            'fiscal_regime_id' => [
+                'required',
+                'integer',
+            ],
         ];
     }
 }
