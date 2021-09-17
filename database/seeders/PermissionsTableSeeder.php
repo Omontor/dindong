@@ -656,6 +656,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 162,
+                'title' => 'invoice_serie_create',
+            ],
+            [
+                'id'    => 163,
+                'title' => 'invoice_serie_edit',
+            ],
+            [
+                'id'    => 164,
+                'title' => 'invoice_serie_show',
+            ],
+            [
+                'id'    => 165,
+                'title' => 'invoice_serie_delete',
+            ],
+            [
+                'id'    => 166,
+                'title' => 'invoice_serie_access',
+            ],
+            [
+                'id'    => 167,
                 'title' => 'profile_password_edit',
             ],
         ];

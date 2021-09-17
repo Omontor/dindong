@@ -105,6 +105,30 @@
                             {{ $invoice->type_voucher->name ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.invoice.fields.folio') }}
+                        </th>
+                        <td>
+                            {{ $invoice->folio }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.invoice.fields.serie') }}
+                        </th>
+                        <td>
+                            {{ $invoice->serie->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.invoice.fields.status') }}
+                        </th>
+                        <td>
+                            {{ $invoice->status }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

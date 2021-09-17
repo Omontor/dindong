@@ -65,7 +65,7 @@
                     </li>
                 @endcan
                 @can('datos_de_facturacion_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/user-infos*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/user-infos*") ? "menu-open" : "" }} {{ request()->is("admin/invoice-series*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-receipt">
 
@@ -84,6 +84,18 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.userInfo.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('invoice_serie_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.invoice-series.index") }}" class="nav-link {{ request()->is("admin/invoice-series") || request()->is("admin/invoice-series/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-file-invoice">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.invoiceSerie.title') }}
                                         </p>
                                     </a>
                                 </li>

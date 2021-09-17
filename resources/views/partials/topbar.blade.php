@@ -2,13 +2,9 @@
     <div class="topbar">
         <!-- LOGO -->
         <div class="topbar-left">
-            <a href="" class="logo">
+            <a href="/home" class="logo">
                 <span>
-                    <img src="/assets/images/Icon.png" alt="logo-small" class="logo-sm">
-                </span>
-                <span>
-                    <img src="/assets/images/logohorizontal.jpg" alt="logo-large" class="logo-lg logo-light">
-                    <img src="/assets/images/logohorizontal.jpg" alt="logo-large" class="logo-lg">
+                    <img src="/images/letras.jpg" alt="logo-large" style="max-width:200px;">
                 </span>
             </a>
         </div>

@@ -10,8 +10,10 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->datetime('emision');
-            $table->string('total_letter');
+            $table->datetime('emision')->nullable();
+            $table->string('total_letter')->nullable();
+            $table->integer('folio')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

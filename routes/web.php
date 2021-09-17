@@ -137,6 +137,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('facturamas/destroy', 'FacturamaController@massDestroy')->name('facturamas.massDestroy');
     Route::resource('facturamas', 'FacturamaController');
 
+
+    // Invoice Serie
+    Route::delete('invoice-series/destroy', 'InvoiceSerieController@massDestroy')->name('invoice-series.massDestroy');
+    Route::resource('invoice-series', 'InvoiceSerieController');
+
+
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');
@@ -289,6 +295,10 @@ Route::group(['as' => 'frontend.', 'namespace' => 'Frontend', 'middleware' => ['
     // Facturama
     Route::delete('facturamas/destroy', 'FacturamaController@massDestroy')->name('facturamas.massDestroy');
     Route::resource('facturamas', 'FacturamaController');
+
+        // Invoice Serie
+    Route::delete('invoice-series/destroy', 'InvoiceSerieController@massDestroy')->name('invoice-series.massDestroy');
+    Route::resource('invoice-series', 'InvoiceSerieController');
 
     Route::get('frontend/profile2', 'ProfileController@index')->name('profile.index');
     Route::post('frontend/profile2', 'ProfileController@update')->name('profile.update');

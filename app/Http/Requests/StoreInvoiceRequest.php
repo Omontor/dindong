@@ -17,52 +17,35 @@ class StoreInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_id' => [
-                'required',
-                'integer',
-            ],
             'user_data_id' => [
                 'required',
                 'integer',
             ],
             'emision' => [
-                'required',
                 'date_format:' . config('panel.date_format') . ' ' . config('panel.time_format'),
+                'nullable',
             ],
             'products.*' => [
                 'integer',
             ],
             'products' => [
-                'required',
                 'array',
             ],
             'total_letter' => [
                 'string',
-                'required',
+                'nullable',
             ],
-            'paid_form_id' => [
-                'required',
+            'folio' => [
+                'nullable',
                 'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
-            'payment_method_id' => [
-                'required',
+            'status' => [
+                'nullable',
                 'integer',
-            ],
-            'cfdi_use_id' => [
-                'required',
-                'integer',
-            ],
-            'currency_id' => [
-                'required',
-                'integer',
-            ],
-            'taxes_id' => [
-                'required',
-                'integer',
-            ],
-            'type_voucher_id' => [
-                'required',
-                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
         ];
     }

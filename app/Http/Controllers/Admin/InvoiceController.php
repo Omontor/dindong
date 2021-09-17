@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Client;
 use App\Models\Currency;
 use App\Models\Invoice;
+use App\Models\InvoiceSerie;
 use App\Models\PaymentForm;
 use App\Models\PaymentMethod;
 use App\Models\Product;
@@ -27,11 +28,11 @@ class InvoiceController extends Controller
     {
         abort_if(Gate::denies('invoice_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $invoices = Invoice::with(['name', 'user_data', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'created_by'])->get();
-
-        $clients = Client::get();
+        $invoices = Invoice::with(['user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'serie', 'created_by'])->get();
 
         $user_infos = UserInfo::get();
+
+        $clients = Client::get();
 
         $products = Product::get();
 
@@ -47,18 +48,20 @@ class InvoiceController extends Controller
 
         $related_vouchers = RelatedVoucher::get();
 
+        $invoice_series = InvoiceSerie::get();
+
         $users = User::get();
 
-        return view('admin.invoices.index', compact('invoices', 'clients', 'user_infos', 'products', 'payment_forms', 'payment_methods', 'tax_uses', 'currencies', 'taxes', 'related_vouchers', 'users'));
+        return view('admin.invoices.index', compact('invoices', 'user_infos', 'clients', 'products', 'payment_forms', 'payment_methods', 'tax_uses', 'currencies', 'taxes', 'related_vouchers', 'invoice_series', 'users'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('invoice_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $names = Client::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $user_datas = UserInfo::pluck('legal_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $names = Client::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $products = Product::pluck('name', 'id');
 
@@ -74,7 +77,9 @@ class InvoiceController extends Controller
 
         $type_vouchers = RelatedVoucher::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.invoices.create', compact('names', 'user_datas', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers'));
+        $series = InvoiceSerie::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series'));
     }
 
     public function store(StoreInvoiceRequest $request)
@@ -105,9 +110,11 @@ class InvoiceController extends Controller
 
         $type_vouchers = RelatedVoucher::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $invoice->load('name', 'user_data', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'created_by');
+        $series = InvoiceSerie::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.invoices.edit', compact('names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'invoice'));
+        $invoice->load('user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'serie', 'created_by');
+
+        return view('admin.invoices.edit', compact('names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series', 'invoice'));
     }
 
     public function update(UpdateInvoiceRequest $request, Invoice $invoice)
@@ -122,7 +129,7 @@ class InvoiceController extends Controller
     {
         abort_if(Gate::denies('invoice_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $invoice->load('name', 'user_data', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'created_by');
+        $invoice->load('user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'serie', 'created_by');
 
         return view('admin.invoices.show', compact('invoice'));
     }

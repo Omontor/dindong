@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateInvoiceRequest;
 use App\Models\Client;
 use App\Models\Currency;
 use App\Models\Invoice;
+use App\Models\InvoiceSerie;
 use App\Models\PaymentForm;
 use App\Models\PaymentMethod;
 use App\Models\Product;
@@ -20,7 +21,6 @@ use App\Models\UserInfo;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Auth;
 
 class InvoiceController extends Controller
 {
@@ -28,7 +28,7 @@ class InvoiceController extends Controller
     {
         abort_if(Gate::denies('invoice_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $invoices = Invoice::with(['user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'created_by'])->get();
+        $invoices = Invoice::with(['user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'serie', 'created_by'])->get();
 
         $user_infos = UserInfo::get();
 
@@ -48,19 +48,11 @@ class InvoiceController extends Controller
 
         $related_vouchers = RelatedVoucher::get();
 
+        $invoice_series = InvoiceSerie::get();
+
         $users = User::get();
 
-
-if(Auth::user()->userinfo->count() == 0){
-            return redirect()->back();
-        }
-        else{
-              return view('frontend.invoices.index', compact('invoices', 'user_infos', 'clients', 'products', 'payment_forms', 'payment_methods', 'tax_uses', 'currencies', 'taxes', 'related_vouchers', 'users')); 
-
-        }
-
-        
-
+        return view('frontend.invoices.index', compact('invoices', 'user_infos', 'clients', 'products', 'payment_forms', 'payment_methods', 'tax_uses', 'currencies', 'taxes', 'related_vouchers', 'invoice_series', 'users'));
     }
 
     public function create()
@@ -85,16 +77,9 @@ if(Auth::user()->userinfo->count() == 0){
 
         $type_vouchers = RelatedVoucher::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $series = InvoiceSerie::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-
-        if(Auth::user()->userinfo->count() == 0){
-            return redirect()->back();
-        }
-        else{
-        return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers'));
-        }
-
-
+        return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series'));
     }
 
     public function store(StoreInvoiceRequest $request)
@@ -125,9 +110,11 @@ if(Auth::user()->userinfo->count() == 0){
 
         $type_vouchers = RelatedVoucher::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $invoice->load('user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'created_by');
+        $series = InvoiceSerie::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('frontend.invoices.edit', compact('names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'invoice'));
+        $invoice->load('user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'serie', 'created_by');
+
+        return view('frontend.invoices.edit', compact('names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series', 'invoice'));
     }
 
     public function update(UpdateInvoiceRequest $request, Invoice $invoice)
@@ -142,7 +129,7 @@ if(Auth::user()->userinfo->count() == 0){
     {
         abort_if(Gate::denies('invoice_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $invoice->load('user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'created_by');
+        $invoice->load('user_data', 'name', 'products', 'paid_form', 'payment_method', 'cfdi_use', 'currency', 'taxes', 'type_voucher', 'serie', 'created_by');
 
         return view('frontend.invoices.show', compact('invoice'));
     }

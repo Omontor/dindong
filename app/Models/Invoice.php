@@ -28,8 +28,8 @@ class Invoice extends Model
 
     protected $fillable = [
         'created_at',
-        'name_id',
         'user_data_id',
+        'name_id',
         'emision',
         'total_letter',
         'paid_form_id',
@@ -38,19 +38,22 @@ class Invoice extends Model
         'currency_id',
         'taxes_id',
         'type_voucher_id',
+        'folio',
+        'serie_id',
+        'status',
         'created_by_id',
         'updated_at',
         'deleted_at',
     ];
 
-    public function name()
-    {
-        return $this->belongsTo(Client::class, 'name_id');
-    }
-
     public function user_data()
     {
         return $this->belongsTo(UserInfo::class, 'user_data_id');
+    }
+
+    public function name()
+    {
+        return $this->belongsTo(Client::class, 'name_id');
     }
 
     public function getEmisionAttribute($value)
@@ -96,6 +99,11 @@ class Invoice extends Model
     public function type_voucher()
     {
         return $this->belongsTo(RelatedVoucher::class, 'type_voucher_id');
+    }
+
+    public function serie()
+    {
+        return $this->belongsTo(InvoiceSerie::class, 'serie_id');
     }
 
     public function created_by()

@@ -44,6 +44,15 @@
                             {{ trans('cruds.invoice.fields.taxes') }}
                         </th>
                         <th>
+                            {{ trans('cruds.invoice.fields.folio') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.invoice.fields.serie') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.invoice.fields.status') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -97,6 +106,20 @@
                             </select>
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($invoice_series as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -128,6 +151,15 @@
                             </td>
                             <td>
                                 {{ $invoice->taxes->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $invoice->folio ?? '' }}
+                            </td>
+                            <td>
+                                {{ $invoice->serie->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $invoice->status ?? '' }}
                             </td>
                             <td>
                                 @can('invoice_show')

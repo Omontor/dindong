@@ -102,6 +102,11 @@
                                             {{ trans('cruds.userInfo.title') }}
                                         </a>
                                     @endcan
+                                    @can('invoice_serie_access')
+                                        <a class="dropdown-item ml-3" href="{{ route('frontend.invoice-series.index') }}">
+                                            {{ trans('cruds.invoiceSerie.title') }}
+                                        </a>
+                                    @endcan
                                     @can('product_control_access')
                                         <a class="dropdown-item disabled" href="#">
                                             {{ trans('cruds.productControl.title') }}

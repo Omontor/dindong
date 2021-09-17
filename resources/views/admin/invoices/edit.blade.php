@@ -11,8 +11,8 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <label class="required" for="name_id">{{ trans('cruds.invoice.fields.name') }}</label>
-                <select class="form-control select2 {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name_id" id="name_id" required>
+                <label for="name_id">{{ trans('cruds.invoice.fields.name') }}</label>
+                <select class="form-control select2 {{ $errors->has('name') ? 'is-invalid' : '' }}" name="name_id" id="name_id">
                     @foreach($names as $id => $entry)
                         <option value="{{ $id }}" {{ (old('name_id') ? old('name_id') : $invoice->name->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -23,12 +23,12 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="products">{{ trans('cruds.invoice.fields.products') }}</label>
+                <label for="products">{{ trans('cruds.invoice.fields.products') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('products') ? 'is-invalid' : '' }}" name="products[]" id="products" multiple required>
+                <select class="form-control select2 {{ $errors->has('products') ? 'is-invalid' : '' }}" name="products[]" id="products" multiple>
                     @foreach($products as $id => $product)
                         <option value="{{ $id }}" {{ (in_array($id, old('products', [])) || $invoice->products->contains($id)) ? 'selected' : '' }}>{{ $product }}</option>
                     @endforeach
@@ -39,16 +39,16 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.products_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="total_letter">{{ trans('cruds.invoice.fields.total_letter') }}</label>
-                <input class="form-control {{ $errors->has('total_letter') ? 'is-invalid' : '' }}" type="text" name="total_letter" id="total_letter" value="{{ old('total_letter', $invoice->total_letter) }}" required>
+                <label for="total_letter">{{ trans('cruds.invoice.fields.total_letter') }}</label>
+                <input class="form-control {{ $errors->has('total_letter') ? 'is-invalid' : '' }}" type="text" name="total_letter" id="total_letter" value="{{ old('total_letter', $invoice->total_letter) }}">
                 @if($errors->has('total_letter'))
                     <span class="text-danger">{{ $errors->first('total_letter') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.invoice.fields.total_letter_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="paid_form_id">{{ trans('cruds.invoice.fields.paid_form') }}</label>
-                <select class="form-control select2 {{ $errors->has('paid_form') ? 'is-invalid' : '' }}" name="paid_form_id" id="paid_form_id" required>
+                <label for="paid_form_id">{{ trans('cruds.invoice.fields.paid_form') }}</label>
+                <select class="form-control select2 {{ $errors->has('paid_form') ? 'is-invalid' : '' }}" name="paid_form_id" id="paid_form_id">
                     @foreach($paid_forms as $id => $entry)
                         <option value="{{ $id }}" {{ (old('paid_form_id') ? old('paid_form_id') : $invoice->paid_form->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -59,8 +59,8 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.paid_form_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="payment_method_id">{{ trans('cruds.invoice.fields.payment_method') }}</label>
-                <select class="form-control select2 {{ $errors->has('payment_method') ? 'is-invalid' : '' }}" name="payment_method_id" id="payment_method_id" required>
+                <label for="payment_method_id">{{ trans('cruds.invoice.fields.payment_method') }}</label>
+                <select class="form-control select2 {{ $errors->has('payment_method') ? 'is-invalid' : '' }}" name="payment_method_id" id="payment_method_id">
                     @foreach($payment_methods as $id => $entry)
                         <option value="{{ $id }}" {{ (old('payment_method_id') ? old('payment_method_id') : $invoice->payment_method->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -71,8 +71,8 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.payment_method_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="cfdi_use_id">{{ trans('cruds.invoice.fields.cfdi_use') }}</label>
-                <select class="form-control select2 {{ $errors->has('cfdi_use') ? 'is-invalid' : '' }}" name="cfdi_use_id" id="cfdi_use_id" required>
+                <label for="cfdi_use_id">{{ trans('cruds.invoice.fields.cfdi_use') }}</label>
+                <select class="form-control select2 {{ $errors->has('cfdi_use') ? 'is-invalid' : '' }}" name="cfdi_use_id" id="cfdi_use_id">
                     @foreach($cfdi_uses as $id => $entry)
                         <option value="{{ $id }}" {{ (old('cfdi_use_id') ? old('cfdi_use_id') : $invoice->cfdi_use->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -83,8 +83,8 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.cfdi_use_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="currency_id">{{ trans('cruds.invoice.fields.currency') }}</label>
-                <select class="form-control select2 {{ $errors->has('currency') ? 'is-invalid' : '' }}" name="currency_id" id="currency_id" required>
+                <label for="currency_id">{{ trans('cruds.invoice.fields.currency') }}</label>
+                <select class="form-control select2 {{ $errors->has('currency') ? 'is-invalid' : '' }}" name="currency_id" id="currency_id">
                     @foreach($currencies as $id => $entry)
                         <option value="{{ $id }}" {{ (old('currency_id') ? old('currency_id') : $invoice->currency->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -95,8 +95,8 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.currency_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="taxes_id">{{ trans('cruds.invoice.fields.taxes') }}</label>
-                <select class="form-control select2 {{ $errors->has('taxes') ? 'is-invalid' : '' }}" name="taxes_id" id="taxes_id" required>
+                <label for="taxes_id">{{ trans('cruds.invoice.fields.taxes') }}</label>
+                <select class="form-control select2 {{ $errors->has('taxes') ? 'is-invalid' : '' }}" name="taxes_id" id="taxes_id">
                     @foreach($taxes as $id => $entry)
                         <option value="{{ $id }}" {{ (old('taxes_id') ? old('taxes_id') : $invoice->taxes->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -107,8 +107,8 @@
                 <span class="help-block">{{ trans('cruds.invoice.fields.taxes_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="type_voucher_id">{{ trans('cruds.invoice.fields.type_voucher') }}</label>
-                <select class="form-control select2 {{ $errors->has('type_voucher') ? 'is-invalid' : '' }}" name="type_voucher_id" id="type_voucher_id" required>
+                <label for="type_voucher_id">{{ trans('cruds.invoice.fields.type_voucher') }}</label>
+                <select class="form-control select2 {{ $errors->has('type_voucher') ? 'is-invalid' : '' }}" name="type_voucher_id" id="type_voucher_id">
                     @foreach($type_vouchers as $id => $entry)
                         <option value="{{ $id }}" {{ (old('type_voucher_id') ? old('type_voucher_id') : $invoice->type_voucher->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -117,6 +117,34 @@
                     <span class="text-danger">{{ $errors->first('type_voucher') }}</span>
                 @endif
                 <span class="help-block">{{ trans('cruds.invoice.fields.type_voucher_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="folio">{{ trans('cruds.invoice.fields.folio') }}</label>
+                <input class="form-control {{ $errors->has('folio') ? 'is-invalid' : '' }}" type="number" name="folio" id="folio" value="{{ old('folio', $invoice->folio) }}" step="1">
+                @if($errors->has('folio'))
+                    <span class="text-danger">{{ $errors->first('folio') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.invoice.fields.folio_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="serie_id">{{ trans('cruds.invoice.fields.serie') }}</label>
+                <select class="form-control select2 {{ $errors->has('serie') ? 'is-invalid' : '' }}" name="serie_id" id="serie_id">
+                    @foreach($series as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('serie_id') ? old('serie_id') : $invoice->serie->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('serie'))
+                    <span class="text-danger">{{ $errors->first('serie') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.invoice.fields.serie_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="status">{{ trans('cruds.invoice.fields.status') }}</label>
+                <input class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" type="number" name="status" id="status" value="{{ old('status', $invoice->status) }}" step="1">
+                @if($errors->has('status'))
+                    <span class="text-danger">{{ $errors->first('status') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.invoice.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

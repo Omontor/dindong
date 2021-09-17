@@ -26,6 +26,7 @@ class UserInfoController extends Controller
         abort_if(Gate::denies('user_info_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $userInfos = UserInfo::with(['state', 'municipality', 'country', 'created_by', 'media'])->get();
+                $regim = FiscalRegime::all();
 
         return view('admin.userInfos.index', compact('userInfos','regim'));
     }
@@ -43,7 +44,7 @@ class UserInfoController extends Controller
         $regim = FiscalRegime::all();
 
 
-        return view('admin.userInfos.create', compact('states', 'municipalities', 'countries' 'regim'));
+        return view('admin.userInfos.create', compact('states', 'municipalities', 'countries' ,'regim'));
     }
 
     public function store(StoreUserInfoRequest $request)

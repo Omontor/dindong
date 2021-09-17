@@ -10,7 +10,9 @@
                         <li class="nav-item"><a class="nav-link" href="/template/dashboard/sales-index.html"><i class="ti-control-record"></i>Sales</a></li> 
                     </ul> 
                 </li>--}}
+ <li class="btn btn-block btn-gradient-primary waves-effect waves-light"><a class="nav-link" href="/home" style="color:white;">Ir Al Inicio</a></li>
 
+ <hr>
                 <li>
                     <a href="javascript: void(0);"><i class="ti-user"></i><span>Clientes</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="nav-second-level" aria-expanded="false">
