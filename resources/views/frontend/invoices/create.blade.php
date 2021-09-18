@@ -17,6 +17,7 @@
                             <div class="page-title-box">
                                 <div class="float-right">
                                     <ol class="breadcrumb">
+
                                         <li class="breadcrumb-item">Din Dong</li>
                                         <li class="breadcrumb-item"> <a href="/home">Inicio</a></li>
                                         <li class="breadcrumb-item"> <a href="{{route('frontend.invoices.index')}}"> Facturación</a></li>
@@ -34,7 +35,7 @@
                     @endif
                     <!-- end page title end breadcrumb -->
                     <div class="row">
-                        <div class="col-lg-10 mx-auto">
+                        <div class="col-lg-12 mx-auto">
                             <div class="card">
                                 <div class="card-body invoice-head"> 
                                     <div class="row">
@@ -124,10 +125,19 @@
     <div class="col-lg-12">
         <div class="table-responsive project-invoice">
 
-<INPUT type="button" value="Add Row" onclick="addRow('dataTable')" />
+            <div class="row">
+            <div class="col-sm-12 col-lg-4" style="padding-top:10px; padding-bottom: 10px;">
+                <a class="btn btn-block btn-gradient-primary waves-effect waves-light" style="color: white;" onclick="addRow('dataTable')"> <i class="mdi mdi-qrcode-edit"></i> Agregar Producto</a>
+            </div>            
+            <div class="col-sm-12 col-lg-4" style="padding-top:10px; padding-bottom: 10px;">
+                <a class="btn btn-block btn-gradient-pink waves-effect waves-light" style="color: white;" onclick="deleteRow('dataTable')"> <i class="mdi mdi-qrcode-edit"></i> Eliminar Producto</a>
+            </div>            
 
-            <INPUT type="button" value="Delete Row" onclick="deleteRow('dataTable')" />
-            <a href="#" class="btn" onclick="totalIt()">Calcular Total</a>
+            <div class="col-sm-12 col-lg-4" style="padding-top:10px; padding-bottom: 10px;">
+                <a class="btn btn-block btn-gradient-info waves-effect waves-light" style="color: white;" onclick="totalIt('dataTable')"> <i class="mdi mdi-qrcode-edit"></i> Calcular Total</a>
+            </div>
+            </div>
+            
             <hr>    
         <form action="" method="post" enctype="multipart/form-data">
 
@@ -135,18 +145,20 @@
                 <thead class="thead-light">
         <TR>
         <TH></TH>
-        <TH>id</TH>
+        <TH>No.</TH>
+        <TH>Unidad</TH>
         <TH>Producto</TH>
         <TH>Cantidad</TH>
         <TH>Unitario</TH>
-        <TH formula="cost*qty"summary="sum">Subtotal</TH>
+        <TH formula="cost*qty"summary="sum">Importe</TH>
          </thead>
          <tbody>
         </TR>
                 <TR>
-                    <TD><INPUT type="checkbox" name="chk[]"/></TD>
+                    <TD><INPUT type="checkbox"  name="chk[]"/ hidden></TD>
                     <TD> 1 </TD>
                     <TD> <input class="form-control" type="text" name="item[] "/> </TD>
+                    <TD> <input class="form-control" type="text" name="unit[]"/> </TD>
                     <TD> <input class="form-control" type="text" id="qty1" name="qty[]"/> </TD>
                     <TD> <input class="form-control" type="text" id="cost1" name="cost[]" /> </TD>
                     <TD> <input class="form-control" type="text" id="price1" name="price[]" /> </TD>
@@ -157,13 +169,75 @@
             subtotal: <input class="form-control" type="text" readonly="readonly" id="total" /><br/>
             IVA: <input class="form-control" type="text" readonly="readonly" id="iva" value="16%" /><br/>
             total: <input class="form-control" type="text" readonly="readonly" id="total2" value="" /><br/>
+
+
+
+        </form>
+        </div>
+    </div>
+</div>
+              {{----}}
+
       
-          
- </form>
-</div>
-</div>
-</div>
-                        
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <h6><b>Forma de Pago</h6>
+                                                <select class="form-control" name="">
+                                                    @forelse($paymentforms as $form)
+
+                                                    <option value="{{$form->id}}">
+                                                        {{$form->code}} -
+                                                        {{$form->name}}
+                                                    </option>
+                                                    @empty
+                                                    Sin formas de pago de base de datos
+                                                    @endforelse
+                                                </select>     
+                </div>
+                                                                 
+            </div>
+
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <h6><b>Método de Pago</h6>
+                                                <select class="form-control" name="">
+                                                    @forelse($payment_methods as $method)
+
+                                                    <option value="{{$method->id}}">
+                                                        {{$method->code}} -
+                                                        {{$method->name}}
+                                                    </option>
+                                                    @empty
+                                                    Sin métodos de pago de base de datos
+                                                    @endforelse
+                                                </select>     
+                </div>
+                                                                 
+            </div>            
+
+
+            <div class="col-lg-12">
+                <div class="form-group">
+                  <h6><b>Uso del CFDI</h6>
+                                                <select class="form-control" name="">
+                                                    @forelse($cfdi_uses as $uso)
+
+                                                    <option value="{{$uso->id}}">
+                                                        {{$uso->code}} - {{$uso->name}}
+                                                    </option>
+                                                    @empty
+                                                    Sin usos de CFDI en base de datos
+                                                    @endforelse
+                                                </select>     
+                </div>
+                                                                 
+            </div>
+    
+
+                                                 
+{{----}}          
+
+        
                             <div class="row justify-content-center">
                                         <div class="col-lg-12" style="align-content:center;">
                                             <h5 class="mt-4">Terms And Condition :</h5>
@@ -182,7 +256,7 @@
                                         </div><!--end col-->
                                         <div class="col-lg-12 col-xl-4">
                                             <div class="float-right d-print-none">
-                                                <a href="javascript:window.print()" class="btn btn-gradient-info"><i class="fa fa-print"></i></a>
+                                                <a href="#" class="btn" onclick="totalIt()">Calcular Total</a>
                                                 <a href="#" class="btn btn-gradient-primary">Submit</a>
                                                 <a href="#" class="btn btn-gradient-danger">Cancel</a>
                                         </form>
@@ -201,7 +275,6 @@
               parseFloat(document.getElementById("qty"+idx).value);
   //  alert(idx+":"+price);  
   document.getElementById("price"+idx).value= isNaN(price)?"0.00":price.toFixed(2);
-   
 }
 
 function totalIt() {
@@ -221,6 +294,8 @@ function totalIt() {
 window.onload=function() {
   document.getElementsByName("qty[]")[0].onkeyup=function() {calc(1)};
   document.getElementsByName("cost[]")[0].onkeyup=function() {calc(1)};
+    totalIt();
+
 }
 
 var rowCount =0;
@@ -244,26 +319,25 @@ var rowCount =0;
         var cell3 = row.insertCell(2);
         var element3 = document.createElement("input");
         element3.type = "text";
-        element3.name = "item[]";
+        element3.name = "unit[]";
         element3.required = "required";
         element3.class = "form-control";
-        cell3.appendChild(element3);
+        cell3.appendChild(element3);        
 
         var cell4 = row.insertCell(3);
         var element4 = document.createElement("input");
         element4.type = "text";
-        element4.name = "qty[]";
+        element4.name = "item[]";
+        element4.required = "required";
         element4.class = "form-control";
-        element4.id = "qty"+rowCount;
-        element4.onkeyup=function() {calc(rowCount);}
         cell4.appendChild(element4);
 
         var cell5 = row.insertCell(4);
         var element5 = document.createElement("input");
         element5.type = "text";
+        element5.name = "qty[]";
         element5.class = "form-control";
-        element5.name = "cost[]";
-        element5.id = "cost"+rowCount;
+        element5.id = "qty"+rowCount;
         element5.onkeyup=function() {calc(rowCount);}
         cell5.appendChild(element5);
 
@@ -271,11 +345,22 @@ var rowCount =0;
         var element6 = document.createElement("input");
         element6.type = "text";
         element6.class = "form-control";
-        element6.name = "price[]";
-        element6.id = "price"+rowCount
+        element6.name = "cost[]";
+        element6.id = "cost"+rowCount;
+        element6.onkeyup=function() {calc(rowCount);}
         cell6.appendChild(element6);
 
+        var cell7 = row.insertCell(6);
+        var element7 = document.createElement("input");
+        element7.type = "text";
+        element7.class = "form-control";
+        element7.name = "price[]";
+        element7.id = "price"+rowCount
+        cell7.appendChild(element7);
+
+
         $('input[type=text]').addClass('form-control');
+
 
 
     }

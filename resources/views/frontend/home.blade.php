@@ -80,6 +80,54 @@
                                         </div>
                                     </div>
                                 </div><!--end card-body-->
+                            </div><!--end card-->                               
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title mt-0 mb-3">Facturación</h4>
+
+                                    <div class="">
+                                                                         <div  class="flot-chart">
+
+                                        <canvas id="myChart_circle" width="400" height="100"></canvas>
+                                        <script>
+                                        var ctx = document.getElementById('myChart_circle').getContext('2d');
+                                        var myChart_circle = new Chart(ctx, {
+                                            type: 'doughnut',
+                                            data: {
+                                                labels: ['Emitidas', 'Restantes', 'Canceladas'],
+                                                datasets: [{
+                                                    label: '# of Votes',
+                                                    data: [12, 19, 3],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                                        });
+                                        </script>
+
+                                        
+                                    </div> 
+                                    </div>
+                                </div><!--end card-body-->
                             </div><!--end card-->                            
                         </div><!-- end col-->
 
@@ -153,9 +201,12 @@
                                     </div><!--end card-->
                                 </div><!--end col--> --}}
                             </div><!--end row-->
+
+
+
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="header-title mt-0">Historial de facturación</h4>
+                                    <h4 class="header-title mt-0">Ingresos Por Mes</h4>
                                     <div  class="flot-chart">
 
                                         <canvas id="myChart" width="400" height="100"></canvas>
@@ -200,7 +251,65 @@
                                         
                                     </div>                                
                                 </div><!--end card-body--> 
+                            </div><!--end card-->                              
+
+
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title mt-0">Emisión de Facturas</h4>
+                                    <div  class="flot-chart">
+
+                                        <canvas id="myChart2" width="400" height="100"></canvas>
+                                        <script>
+                                        var ctx = document.getElementById('myChart2').getContext('2d');
+                                        var myChart2 = new Chart(ctx, {
+                                            type: 'line',
+                                            data: {
+                                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                                datasets: [{
+                                                    label: '# of Votes',
+                                                    data: [12, 19, 3, 5, 2, 3],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)',
+                                                        'rgba(153, 102, 255, 0.2)',
+                                                        'rgba(255, 159, 64, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)',
+                                                        'rgba(255, 159, 64, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
+                                                    }
+                                                }
+                                            }
+                                        });
+                                        </script>
+
+                                        
+                                    </div>                                
+                                </div><!--end card-body--> 
                             </div><!--end card-->  
+
+
+
+
+
+
+
                         </div><!-- end col-->
                     </div><!--end row-->
 

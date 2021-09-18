@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
             StateSeeder::class,
             MunicipiosTableSeeder::class,
             FiscalRegimesTableSeeder::class,
+            PaymentFormsTableSeeder::class,
+            PaymentMethodsTableSeeder::class,
+            TaxUsesTableSeeder::class,
         ]);
     }
 }

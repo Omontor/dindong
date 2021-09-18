@@ -78,11 +78,11 @@ class InvoiceController extends Controller
 
         $products = Product::pluck('name', 'id');
 
-        $paid_forms = PaymentForm::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $paymentforms = PaymentForm::all();
 
-        $payment_methods = PaymentMethod::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $payment_methods = PaymentMethod::all();
 
-        $cfdi_uses = TaxUse::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $cfdi_uses = TaxUse::all();
 
         $currencies = Currency::pluck('code', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -94,7 +94,7 @@ class InvoiceController extends Controller
 
         $userinfo = Auth::user()->userinfo()->first();
 
-        return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paid_forms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series', 'userinfo'));
+        return view('frontend.invoices.create', compact('user_datas', 'names', 'products', 'paymentforms', 'payment_methods', 'cfdi_uses', 'currencies', 'taxes', 'type_vouchers', 'series', 'userinfo'));
     }
     }
 
