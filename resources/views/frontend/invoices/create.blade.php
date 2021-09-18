@@ -31,6 +31,13 @@
                     <!-- end page title end breadcrumb -->
 
                     @if(Session::has('message'))
+
+ @if ($errors->any())
+     @foreach ($errors->all() as $error)
+         <div>{{$error}}</div>
+     @endforeach
+ @endif
+
                     <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{Session::get('message') }}</p>
                     @endif
                     <!-- end page title end breadcrumb -->
@@ -50,7 +57,9 @@
   top: 50%;
   left: 25%;
   margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
-"> 
+">                  <form method="POST" action="{{ route("frontend.invoices.store") }}" enctype="multipart/form-data">
+                        @method('POST')
+                        @csrf
                                              </center>                                             
                                         </div><!--end col-->    
                                         <div class="col-md-6 align-self-center">
@@ -99,9 +108,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="">
-                    <form method="POST" action="{{ route("frontend.invoices.store") }}" enctype="multipart/form-data">
-                        @method('POST')
-                        @csrf
+   
                                                 <h6 class="mb-0"><b>Selecciona el cliente a quien deseas facturarle</h6>
                                                     <br>
                                                 <select class="form-control" name="">
@@ -127,19 +134,19 @@
 
             <div class="row">
             <div class="col-sm-12 col-lg-4" style="padding-top:10px; padding-bottom: 10px;">
-                <a class="btn btn-block btn-gradient-primary waves-effect waves-light" style="color: white;" onclick="addRow('dataTable')"> <i class="mdi mdi-qrcode-edit"></i> Agregar Producto</a>
+                <a class="btn btn-block btn-gradient-primary waves-effect waves-light" style="color: white;" onclick="addRow('dataTable')"> <i class="mdi mdi-plus"></i> Agregar Producto</a>
             </div>            
             <div class="col-sm-12 col-lg-4" style="padding-top:10px; padding-bottom: 10px;">
-                <a class="btn btn-block btn-gradient-pink waves-effect waves-light" style="color: white;" onclick="deleteRow('dataTable')"> <i class="mdi mdi-qrcode-edit"></i> Eliminar Producto</a>
+                <a class="btn btn-block btn-gradient-pink waves-effect waves-light" style="color: white;" onclick="deleteRow('dataTable')"> <i class="mdi mdi-delete"></i> Eliminar Producto</a>
             </div>            
 
             <div class="col-sm-12 col-lg-4" style="padding-top:10px; padding-bottom: 10px;">
-                <a class="btn btn-block btn-gradient-info waves-effect waves-light" style="color: white;" onclick="totalIt('dataTable')"> <i class="mdi mdi-qrcode-edit"></i> Calcular Total</a>
+                <a class="btn btn-block btn-gradient-info waves-effect waves-light" style="color: white;" onclick="totalIt('dataTable')"> <i class="mdi mdi-calculator"></i> Calcular Total</a>
             </div>
             </div>
             
             <hr>    
-        <form action="" method="post" enctype="multipart/form-data">
+
 
             <table class="table table-bordered mb-0" id="dataTable" width="350px" border="1" style="border-collapse:collapse;">
                 <thead class="thead-light">
@@ -151,18 +158,37 @@
         <TH>Cantidad</TH>
         <TH>Unitario</TH>
         <TH formula="cost*qty"summary="sum">Importe</TH>
+                <TH>Prod/Serv</TH>
+                <TH>Clave Unidad</TH>
          </thead>
          <tbody>
         </TR>
                 <TR>
                     <TD><INPUT type="checkbox"  name="chk[]"/ hidden></TD>
                     <TD> 1 </TD>
-                    <TD> <input class="form-control" type="text" name="item[] "/> </TD>
+                    <TD> <input class="form-control" type="text" name="item[] "/>
+                    </TD>
                     <TD> <input class="form-control" type="text" name="unit[]"/> </TD>
                     <TD> <input class="form-control" type="text" id="qty1" name="qty[]"/> </TD>
                     <TD> <input class="form-control" type="text" id="cost1" name="cost[]" /> </TD>
                     <TD> <input class="form-control" type="text" id="price1" name="price[]" /> </TD>
+                    <td> 
+                     
+                                <select class="form-control">
+                    <option>test</option>
+                                </select>
+     
+                        </td>                <td> 
+                     
+                                <select class="form-control">
+                    <option>test</option>
+                                </select>
+     
+                        </td>
+              
+
                 </TR>
+                
             </tbody>
             </TABLE>
             <br>
@@ -172,7 +198,7 @@
 
 
 
-        </form>
+      
         </div>
     </div>
 </div>
@@ -231,20 +257,18 @@
                                                 </select>     
                 </div>
                                                                  
-            </div>
-    
-
+            </div>    
                                                  
 {{----}}          
 
         
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center" style="padding-left: 25px;">
                                         <div class="col-lg-12" style="align-content:center;">
-                                            <h5 class="mt-4">Terms And Condition :</h5>
+                                            <h5 class="mt-4">Recuerda:</h5>
                                             <ul class="pl-3">
-                                                <li><small class="font-12">All accounts are to be paid within 7 days from receipt of invoice. </small></li>
-                                                <li><small class="font-12">To be paid by cheque or credit card or direct payment online.</small ></li>
-                                                <li><small class="font-12"> If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above.</small></li>                                            
+                                                <li><small class="font-12">Este documento aún no tiene valor fiscal</small></li>
+                                                <li><small class="font-12">Podrás ver y editar este CFDI en el siguiente paso</small ></li>
+                                                <li><small class="font-12"> Una vez sellado podrás descargar el CFDI en PDF y XML</small></li>                                            
                                             </ul>
                                         </div> <!--end col-->                                       
                                         
@@ -252,13 +276,13 @@
                                     <hr>
                                     <div class="row d-flex justify-content-center">
                                         <div class="col-lg-12 col-xl-4 ml-auto align-self-center">
-                                            <div class="text-center"><small class="font-12">Thank you very much for doing business with us.</small></div>
+                                            <div class="text-center"><small class="font-12"></small></div>
                                         </div><!--end col-->
                                         <div class="col-lg-12 col-xl-4">
                                             <div class="float-right d-print-none">
-                                                <a href="#" class="btn" onclick="totalIt()">Calcular Total</a>
-                                                <a href="#" class="btn btn-gradient-primary">Submit</a>
-                                                <a href="#" class="btn btn-gradient-danger">Cancel</a>
+            
+                                                <button class="btn btn-block btn-gradient-purple" type="submit"><i class="mdi mdi-qrcode-edit"></i> Generar Precomprobante</button>
+              
                                         </form>
                                             </div>
                                         </div><!--end col-->
@@ -357,6 +381,15 @@ var rowCount =0;
         element7.name = "price[]";
         element7.id = "price"+rowCount
         cell7.appendChild(element7);
+
+
+        var cell8 = row.insertCell(7);
+        var element8 = document.createElement("select");
+        element8.type = "text";
+        element8.class = "form-control";
+        element8.name = "prodserv[]";
+        element8.id = "prodserv"+rowCount
+        cell8.appendChild(element8);
 
 
         $('input[type=text]').addClass('form-control');

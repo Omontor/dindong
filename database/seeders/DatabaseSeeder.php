@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             PaymentFormsTableSeeder::class,
             PaymentMethodsTableSeeder::class,
             TaxUsesTableSeeder::class,
+            ProductoServicioTableSeeder::class,
+            ClaveUnidadTableSeeder::class,
         ]);
     }
 }

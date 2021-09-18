@@ -15,9 +15,10 @@ class ProductCodeController extends Controller
 {
     public function index()
     {
+
         abort_if(Gate::denies('product_code_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $productCodes = ProductCode::all();
+        $productCodes = ProductCode::paginate(1000);
 
         return view('admin.productCodes.index', compact('productCodes'));
     }

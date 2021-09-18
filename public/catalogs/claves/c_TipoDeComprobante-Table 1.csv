@@ -1,0 +1,11 @@
+Catálogo de tipos de comprobante.,,,,,
+Versión,Revisión,,,,
+1.0,3,,,,
+,,,,,
+c_TipoDeComprobante,Descripción,Valor máximo,,Fecha inicio de vigencia,Fecha fin de vigencia
+I,Ingreso,999999999999999999.999999,,42945,
+E,Egreso,999999999999999999.999999,,42945,
+T,Traslado,0,,42736,
+N,Nómina,NS,NdS,42945,
+,,999999999999999999.999999,999999999999999999.999999,42945,
+P,Pago,999999999999999999.999999,,42945,

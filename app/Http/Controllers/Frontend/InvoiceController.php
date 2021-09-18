@@ -100,8 +100,11 @@ class InvoiceController extends Controller
 
     public function store(StoreInvoiceRequest $request)
     {
+
+
+     return $request;
         $invoice = Invoice::create($request->all());
-        $invoice->products()->sync($request->input('products', []));
+       // $invoice->products()->sync($request->input('products', []));
 
         return redirect()->route('frontend.invoices.index');
     }

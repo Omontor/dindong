@@ -18,7 +18,6 @@ class StoreInvoiceRequest extends FormRequest
     {
         return [
             'user_data_id' => [
-                'required',
                 'integer',
             ],
             'emision' => [
